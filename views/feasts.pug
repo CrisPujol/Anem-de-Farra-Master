@@ -1,0 +1,28 @@
+extends index
+
+block content
+    #container.container
+      p.noResult= noResult
+      p.opcioB= opcioB
+      if (weekMsg)
+        h1.weekMsg=weekMsg
+      .flex-feasts
+         each feast in feasts
+            .fesatsList
+               a(class="title", data-id=feast._id, href="/feast/" + feast._id)= feast.name
+               h2= feast.startDateTxt  + " - " + feast.finishDateTxt
+               h6= feast.region + " (" + feast.shire + ")"
+               .row
+                 .col-xs-2.col-md-1
+                   .schedule
+                 .col-xs-9.col-md-3
+                   p= feast.shschedule
+                 .col-xs-2.col-md-1
+                   .place
+                 .col-xs-9.col-md-5
+                   p= feast.place
+               
+    script.
+        window.onload = window.location.hash = '#container';
+
+

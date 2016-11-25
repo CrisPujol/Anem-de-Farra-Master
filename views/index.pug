@@ -1,0 +1,50 @@
+doctype html
+html(lang='en')
+  head
+    title Anem de Farra
+    link(rel="stylesheet", href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel="stylesheet", href='/css/styles.css')
+
+  body
+    header
+      .background
+        .container
+          .logo
+          .row
+            .col-md-6.geoSearch
+              h3 Troba les festes majors més a prop teu!
+              label Permetre accedir a la teva localització
+              button#aPropMeu.aPropMeu.btn.btn-default(onclick='loadLocation()') Permet
+              label#succes.success-msg.hidden S'han agafat correctament
+              form(action='/feasts', method='POST')
+                input#lat.hidden(type='text', name='latitud')
+                input#lon.hidden(type='text', name='longitud')
+                label(for='') Km màxims de distància
+                label.kilometers (Per defecte són 40 km)
+                .row
+                  .col-md-6
+                    input#kmMax.form-control.kmMax(type='text', name='kmMax', placeholder='ex. 20 ...')
+                  .col-md-6
+                    if (message)
+                      p.error-msg Cal permetre accedir la teva ubicació  
+                button.btn.btn-default.search(type='submit') Buscar  
+            .col-md-6.filtersSearch
+              h3 Troba les festes majors segons lloc i dates! 
+              form(action='/feasts', method='POST')
+                label#region.control-label On vols anar?
+                input#regionFeasts.form-control.on(type='text', placeholder='ex: Barcelona ...', name='regionFeasts')
+                label.control-label Quan hi vols anar?
+                input#dataStart.form-control(type='date', name='dataStart')
+                button.btn.btn-default.search(type='submit') Buscar
+    main              
+    block content
+    block content
+
+  script(type='text/javascript',src='https://code.jquery.com/jquery-2.0.3.min.js')  
+  script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5Wb_M0w4atuioOUXPQZOVlO6fJbFs0Zw&callback=initMap"
+   async defer).
+  script(type='text/javascript',src='/js/geolocation.js')
+  script(type='text/javascript',src='/js/getMaps.js') 
+
+
+

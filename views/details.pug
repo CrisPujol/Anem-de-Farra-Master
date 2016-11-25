@@ -1,0 +1,29 @@
+extends index
+
+block content
+    #container.container
+        .feastDetail
+          .row
+            .col-xs-12
+              h1#coordRegion(data-lon=feast.coordRegion[0], data-lat=feast.coordRegion[1])= feast.name
+            .col-xs-12.col-md-6
+              h2= feast.startDateTxt  + " - " + feast.finishDateTxt
+              h6= feast.region + " (" + feast.shire + ")"
+              a(class="webHall",href=feast.hallweb, target='_blank') Web de l'Ajuntament
+            .col-xs-6.col-md-2.col-md-offset-2.text-center
+              span.scheduleDetails
+              p= feast.shschedule
+            .col-xs-6.col-md-2.text-center
+              span.placeDetails
+              p= feast.place
+        #map
+        .othersFeasts
+          h1  A menys de 10 km també hi ha... 
+          .flex-feasts-detail
+            each feasts in nearFeasts
+              .nearFeasts
+                a(class="title", data-id=feasts._id, href="/feast/" + feasts._id)= feasts.name
+                h2= feasts.startDateTxt  + " - " + feasts.finishDateTxt
+                h6= feasts.region           
+    script.
+        window.onload = window.location.hash = '#container';
