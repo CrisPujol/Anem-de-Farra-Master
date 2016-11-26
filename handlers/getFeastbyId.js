@@ -1,7 +1,5 @@
 const feastsAll = require('../models/feasts');
 
-
-
 function getFeastbyId(req, res) {
 
 	const id = req.params.id;
@@ -16,11 +14,13 @@ function getFeastbyId(req, res) {
 
 		feastsAll.find(filterArround, function (err, nearFeasts){
 			if(err) throw err;
-			res.render("details", { feast, nearFeasts } )
-		})
-		
-	})
-	
+
+			feastsAll.distinct("region", function (err, feasts){
+				if(err) throw err;
+				res.render("details", { feast, nearFeasts, feasts } )
+			})		
+		})		
+	})	
 }
 
 

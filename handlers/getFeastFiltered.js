@@ -18,6 +18,10 @@ function getFeastFiltered(req, res) {
 
 		feastsAll.find( filter , function(err, feasts){
 			if(err) throw err;
+			if(feasts.length === 0){
+				const noResult = "Ho sentim, no hi ha resultats";
+				res.render("feasts", { feasts, noResult })
+			}
 			res.render("feasts", { feasts })
 		})	
 	}
@@ -34,7 +38,7 @@ function getFeastFiltered(req, res) {
 			if(err) throw err;
 
 			if(feasts.length === 0){
-				const noResult = "No hi ha resultats per a aquestes dates";
+				const noResult = "Ho sentim, no hi ha resultats";
 				const opcioB = "Sofà i pel·lícula no és una mala opció";
 				res.render("feasts", { feasts, noResult, opcioB })
 			}
@@ -79,12 +83,19 @@ function getFeastFiltered(req, res) {
 
 		feastsAll.find(filterAround, function ( err, feastsAround ){
 			if(err) throw err;
-			const weekMsg = "Des d'avui fins 7 dies després pot triar:";
+			const weekMsg = "Des d'avui fins 7 dies després pots triar:";
 			const feasts = feastsAround.map( elem => elem._doc).filter( elem => {
-
 				return elem.finishDate >= currentDate && elem.startDate <= weekLater;
 			})
-			res.render("feasts", { feasts , weekMsg })
+
+			if(feasts.length === 0){
+				const noResult = "Ho sentim, no hi ha resultats";
+				res.render("feasts", { feasts , noResult })
+			}
+			else{
+				res.render("feasts", { feasts , weekMsg })
+			}
+			
 		})
 	}
 
