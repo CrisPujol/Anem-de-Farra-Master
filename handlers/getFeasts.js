@@ -1,18 +1,42 @@
-const feasts = require('../models/feasts')
+const feastsAll = require('../models/feasts')
 
 function getFeasts(req, res) {
 
 	const { skip, limit, page } = req
-
 	const currentDate = new Date().getTime();
-	
 
-	feasts.find( { finishDate : { $gt: currentDate } },function ( err , feasts ){
-		res.render("feasts" , { feasts} )
+	feastsAll.find( { finishDate : { $gt: currentDate } },function ( err , feasts ){
+		if(err) throw err;
+		res.render("feasts" , { feasts } )			
 	})	
 }
 
 module.exports = getFeasts;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-const feasts = require('../models/feasts');
+const feastsAll = require('../models/feasts');
 
 function getFeastFiltered(req, res) {
 
@@ -16,7 +16,7 @@ function getFeastFiltered(req, res) {
 	if (region) {
 		filter = { region }
 
-		feasts.find( filter , function(err, feasts){
+		feastsAll.find( filter , function(err, feasts){
 			if(err) throw err;
 			res.render("feasts", { feasts })
 		})	
@@ -30,7 +30,7 @@ function getFeastFiltered(req, res) {
 
 		filter = { startDate }
 
-		feasts.find( filter, function(err, feasts){
+		feastsAll.find( filter, function(err, feasts){
 			if(err) throw err;
 
 			if(feasts.length === 0){
@@ -50,10 +50,17 @@ function getFeastFiltered(req, res) {
 		var formatdate = tempdate[1] + "/" + tempdate[2]  + "/" + tempdate[0];
 		const startDate = new Date(formatdate).getTime();
 
-		filter = { region, startDate };
-		
-		feasts.find( filter, function(err, feasts){
+		filter = { region };
+
+		feastsAll.find(filter, function (err, feastsRegion){
+			console.log(feastsRegion)
 			if(err) throw err;
+
+			const feasts = feastsRegion.map( elem => elem._doc).filter( elem => {
+				return elem.startDate === startDate;
+			})
+			console.log("-------------------------------")
+			console.log(feasts)
 			res.render("feasts", { feasts })
 		})
 	}
@@ -70,13 +77,14 @@ function getFeastFiltered(req, res) {
 		const currentDate = new Date().getTime();
 		const weekLater = new Date(currentDate).getTime() + 7 * 24 * 60 * 60 * 1000; 
 
-		feasts.find(filterAround, function ( err, feastsAround ){
+		feastsAll.find(filterAround, function ( err, feastsAround ){
 			if(err) throw err;
 			const weekMsg = "Des d'avui fins 7 dies després pot triar:";
 			const feasts = feastsAround.map( elem => elem._doc).filter( elem => {
+
 				return elem.finishDate >= currentDate && elem.startDate <= weekLater;
 			})
-			res.render("feasts", { feasts , weekMsg})
+			res.render("feasts", { feasts , weekMsg })
 		})
 	}
 

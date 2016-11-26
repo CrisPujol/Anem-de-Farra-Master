@@ -32,7 +32,10 @@ html(lang='en')
               h3 Troba les festes majors segons lloc i dates! 
               form(action='/feasts', method='POST')
                 label#region.control-label On vols anar?
-                input#regionFeasts.form-control.on(type='text', placeholder='ex: Barcelona ...', name='regionFeasts')
+                input#regionFeasts.form-control.on(type='text', placeholder='ex: Barcelona ...', name='regionFeasts', list="regions")
+                datalist#regions
+                  each feast in feasts
+                    option(value=feast.region)  
                 label.control-label Quan hi vols anar?
                 input#dataStart.form-control(type='date', name='dataStart')
                 button.btn.btn-default.search(type='submit') Buscar

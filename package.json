@@ -4,6 +4,7 @@
   "description": "OBJECTIUS\r - Obtenir dades de les festes (nom, poble, dates, localització)\r - Mostrar les festes segons geolocalització i dates\r - Poder filtar per calendari i lloc\r - Ampliar dades amb el registre d'usuaris (ajuntaments, organitzadors de festa,...)\r - Pàgina detalls de cada festa.\r - Mostrar al mapa cada festa",
   "main": "index.js",
   "scripts": {
+    "start": "node app.js",
     "parse-list": "node parser/list",
     "insert-list-db": "node parser/insert-db",
     "parse-details": "node parser/details",
@@ -14,6 +15,9 @@
     "url": "git+https://github.com/CrisPujol/Anem-de-Farra.git"
   },
   "keywords": [],
+  "engines": {
+    "node": "6.9.1"
+  },
   "author": "",
   "license": "ISC",
   "bugs": {

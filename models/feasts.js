@@ -20,6 +20,6 @@ const feastsSchema = mongoose.Schema({
 { collection });
 
 // Model definition
-var feasts = mongoose.model('feastsModel', feastsSchema);
+var feastsAll = mongoose.model('feastsModel', feastsSchema);
 
-module.exports = feasts
+module.exports = feastsAll

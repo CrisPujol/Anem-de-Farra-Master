@@ -1,4 +1,4 @@
-const feasts = require('../models/feasts');
+const feastsAll = require('../models/feasts');
 
 
 
@@ -6,7 +6,7 @@ function getFeastbyId(req, res) {
 
 	const id = req.params.id;
 
-	feasts.findById( id, function(err, feast){
+	feastsAll.findById( id, function(err, feast){
 		if(err) throw err;
 		const latitude = feast.coordRegion[1];
 		const longitude = feast.coordRegion[0];
@@ -14,9 +14,8 @@ function getFeastbyId(req, res) {
 
 		const filterArround = getFilterCoord(latitude,longitude,km)
 
-		feasts.find(filterArround, function (err, nearFeasts){
+		feastsAll.find(filterArround, function (err, nearFeasts){
 			if(err) throw err;
-			console.log(nearFeasts)
 			res.render("details", { feast, nearFeasts } )
 		})
 		
