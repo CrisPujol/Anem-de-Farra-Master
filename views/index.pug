@@ -35,8 +35,8 @@ html(lang='en')
                 label#region.control-label On vols anar?
                 input#regionFeasts.form-control.on(type='text', placeholder='ex: Barcelona ...', name='regionFeasts', list="regions")
                 datalist#regions
-                  each feast in feasts
-                    option(value=feast.region)  
+                  each region in regions
+                    option(value=region)  
                 label.control-label Quan hi vols anar?
                 input#dataStart.form-control(type='date', name='dataStart')
                 button.btn.btn-default.search(type='submit') Buscar

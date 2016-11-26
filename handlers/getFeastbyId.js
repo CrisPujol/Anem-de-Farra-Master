@@ -15,9 +15,10 @@ function getFeastbyId(req, res) {
 		feastsAll.find(filterArround, function (err, nearFeasts){
 			if(err) throw err;
 
-			feastsAll.distinct("region", function (err, feasts){
+			feastsAll.distinct("region", function (err, regions){
 				if(err) throw err;
-				res.render("details", { feast, nearFeasts, feasts } )
+				console.log(regions)
+				res.render("details", { feast, nearFeasts, regions } )
 			})		
 		})		
 	})	

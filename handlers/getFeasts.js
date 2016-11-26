@@ -1,20 +1,49 @@
+// const feastsAll = require('../models/feasts')
+
+// function getFeasts(req, res) {
+
+
+// 	const options = req.locals.queryOptions;
+// 	const currentDate = new Date().getTime();
+// 	const filter = { finishDate : { $gt: currentDate } };
+// 	console.log(options)
+
+// 	feastsAll.paginate( filter, options, function(err, feasts){
+// 		if(err) throw err;
+// 		console.log(feasts)
+// 		res.render("feasts" , { feasts } )
+// 	})
+					
+		
+// }
+
+// module.exports = getFeasts;
+
+
+
+
+
+
 const feastsAll = require('../models/feasts')
 
 function getFeasts(req, res) {
 
-	const { skip, limit, page } = req
+	//const { skip, limit, page } = req
+	//const options = req.locals.queryOptions;
 	const currentDate = new Date().getTime();
+	const filter = { finishDate : { $gt: currentDate } };
 
-	feastsAll.find( { finishDate : { $gt: currentDate } },function ( err , feasts ){
+	feastsAll.find( filter, function ( err , feasts ){
 		if(err) throw err;
-		res.render("feasts" , { feasts } )			
+
+		feastsAll.distinct("region", function (err, regions){
+			if(err) throw err;
+			res.render("feasts", { feasts, regions })
+		})			
 	})	
 }
 
 module.exports = getFeasts;
-
-
-
 
 
 

@@ -16,14 +16,18 @@ function getFeastFiltered(req, res) {
 	if (region) {
 		filter = { region }
 
-		feastsAll.find( filter , function(err, feasts){
-			if(err) throw err;
-			if(feasts.length === 0){
-				const noResult = "Ho sentim, no hi ha resultats";
-				res.render("feasts", { feasts, noResult })
-			}
-			res.render("feasts", { feasts })
-		})	
+		feastsAll.find(filter)
+		.then( feasts => {
+			feastsAll.distinct("region")
+			.then( regions =>{
+				if(feasts.length === 0){
+					const noResult = "Ho sentim, no hi ha resultats";
+					res.render("feasts", { feasts, noResult, regions })
+				}
+				res.render("feasts", { feasts, regions })
+			})
+		})
+		.catch( err => new Error(err) )	
 	}
 
 
@@ -33,19 +37,19 @@ function getFeastFiltered(req, res) {
 		const startDate = new Date(formatdate).getTime();
 
 		filter = { startDate }
-
-		feastsAll.find( filter, function(err, feasts){
-			if(err) throw err;
-
-			if(feasts.length === 0){
-				const noResult = "Ho sentim, no hi ha resultats";
-				const opcioB = "Sofà i pel·lícula no és una mala opció";
-				res.render("feasts", { feasts, noResult, opcioB })
-			}
-			else{
-				res.render("feasts", { feasts })
-			}
+		feastsAll.find(filter)
+		.then ( feasts => {
+			feastsAll.distinct("region")
+			.then( regions => {
+				if(feasts.length === 0){
+					const noResult = "Ho sentim, no hi ha resultats";
+					const opcioB = "Sofà i pel·lícula no és una mala opció";
+					res.render("feasts", { feasts, noResult, opcioB, regions })
+				}
+				res.render("feasts", { feasts, regions })
+			})
 		})
+		.catch( err => new Error(err) )
 	}
 
 
@@ -81,30 +85,34 @@ function getFeastFiltered(req, res) {
 		const currentDate = new Date().getTime();
 		const weekLater = new Date(currentDate).getTime() + 7 * 24 * 60 * 60 * 1000; 
 
-		feastsAll.find(filterAround, function ( err, feastsAround ){
-			if(err) throw err;
-			const weekMsg = "Des d'avui fins 7 dies després pots triar:";
-			const feasts = feastsAround.map( elem => elem._doc).filter( elem => {
-				return elem.finishDate >= currentDate && elem.startDate <= weekLater;
+		feastsAll.find(filterAround)
+			.then( feastsAround => {
+				feastsAll.distinct("region")
+				.then ( regions => {
+					const weekMsg = "Des d'avui fins 7 dies després pots triar:";
+					const feasts = feastsAround.map( elem => elem._doc).filter( elem => {
+						return elem.finishDate >= currentDate && elem.startDate <= weekLater;
+					})
+					if(feasts.length === 0){
+						const noResult = "Ho sentim, no hi ha resultats";
+						res.render("feasts", { feasts , noResult, regions })
+					}
+					res.render("feasts", { feasts , weekMsg, regions })
+				})
 			})
-
-			if(feasts.length === 0){
-				const noResult = "Ho sentim, no hi ha resultats";
-				res.render("feasts", { feasts , noResult })
-			}
-			else{
-				res.render("feasts", { feasts , weekMsg })
-			}
-			
-		})
+			.catch( err => new Error(err) )
 	}
 
 
 
 
 	if( kmMax && lat === 0 ){
-		const message = req.flash('message')
-  		res.render('index', { message, message });
+		feastsAll.distinct("region")
+			.then ( regions =>{
+				const message = req.flash('message')
+				res.render('index', { message, message, regions });
+			})
+			.catch( err => new Error(err) )
 	}
 
 }

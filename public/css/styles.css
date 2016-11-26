@@ -420,5 +420,34 @@ button.aPropMeu:hover{
 @media (max-width: 768px){
 	.fesatsList {
        width: 100%;
+	}
+
+	.nearFeasts{
+		width: 100%;
+	}
+	.filtersSearch {
+    padding-left: 15px;
+    margin-top: 50px;
+    }
+
+    button.aPropMeu {
+    margin-left: 0px;
+    }
+
+    .success-msg{
+	margin-left: 15px;
 
 }
+}
+
+
+@media (max-width: 992px){
+
+	.nearFeasts{
+		width: 100%;
+	}	
+
+	.left{
+		text-align: left;
+	}
+}	

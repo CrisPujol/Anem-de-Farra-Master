@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate');
 
 const collection = "feasts";
 
@@ -20,6 +21,7 @@ const feastsSchema = mongoose.Schema({
 { collection });
 
 // Model definition
+feastsSchema.plugin(mongoosePaginate);
 var feastsAll = mongoose.model('feastsModel', feastsSchema);
 
 module.exports = feastsAll
