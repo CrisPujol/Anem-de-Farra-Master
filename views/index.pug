@@ -2,6 +2,7 @@ doctype html
 html(lang='en')
   head
     title Anem de Farra
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(rel="stylesheet", href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
     link(rel="stylesheet", href='/css/styles.css')
 
@@ -40,6 +41,15 @@ html(lang='en')
                 label.control-label Quan hi vols anar?
                 input#dataStart.form-control(type='date', name='dataStart')
                 button.btn.btn-default.search(type='submit') Buscar
+        .container      
+          if (!user)
+            a(href="/local/login") Login
+            br
+            a(href="/local/register") Register
+          if (user)
+            p You are currently logged in as #{user.username}
+            a(href="/local/logout") Logout
+          br
     main              
     block content
     block content

@@ -8,7 +8,8 @@
     "parse-list": "node parser/list",
     "insert-list-db": "node parser/insert-db",
     "parse-details": "node parser/details",
-    "devtool": "devtool app --watch"
+    "devtool": "devtool app --watch",
+    "dev:local": "AUTH=local nodemon app"
   },
   "repository": {
     "type": "git",
