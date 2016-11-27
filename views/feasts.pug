@@ -21,6 +21,15 @@ block content
                    .place
                  .col-xs-9.col-md-5
                    p= feast.place
+      if (nearFeasts)             
+        .othersFeasts
+            h1  A menys de 10 km també hi ha... 
+            .flex-feasts-detail
+              each feasts in nearFeasts
+                .nearFeasts
+                  a(class="title", data-id=feasts._id, href="/feast/" + feasts._id)= feasts.name
+                  h2= feasts.startDateTxt  + " - " + feasts.finishDateTxt
+                  h6= feasts.region     
                
     script.
         window.onload = window.location.hash = '#container';

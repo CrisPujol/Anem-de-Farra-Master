@@ -33,14 +33,14 @@ function getFeasts(req, res) {
 	const currentDate = new Date().getTime();
 	const filter = { finishDate : { $gt: currentDate } };
 
-	feastsAll.find( filter, function ( err , feasts ){
-		if(err) throw err;
-
-		feastsAll.distinct("region", function (err, regions){
-			if(err) throw err;
-			res.render("feasts", { feasts, regions })
-		})			
-	})	
+	feastsAll.find(filter)
+		.then( feasts => {
+			feastsAll.distinct("region")
+				.then( regions => {
+					res.render("feasts", { feasts, regions })
+				})
+		})
+		.catch( err => new Error(err) )
 }
 
 module.exports = getFeasts;

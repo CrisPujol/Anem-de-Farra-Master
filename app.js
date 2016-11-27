@@ -12,6 +12,7 @@ const path = require('path')
 const prepareParams = require("./middleware/prepareParams");
 const getFeasts = require('./handlers/getFeasts');
 const getFeastFiltered = require('./handlers/getFeastFiltered');
+const getFeastFilteredCoord = require('./handlers/getFeastFilteredCoord');
 const getFeastbyId = require('./handlers/getFeastbyId');
 
 
@@ -34,6 +35,7 @@ app.use( prepareParams )
 	app.get('/', getFeasts )
 	app.get('/feasts', getFeasts )
 	app.post('/feasts', getFeastFiltered )
+	app.post('/feasts/coord', getFeastFilteredCoord )
 	app.get('/feast/:id', getFeastbyId )
 
 

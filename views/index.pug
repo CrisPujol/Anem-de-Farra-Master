@@ -17,7 +17,7 @@ html(lang='en')
               label Permetre accedir a la teva localització
               button#aPropMeu.aPropMeu.btn.btn-default(onclick='loadLocation()') Permet
               label#succes.success-msg.hidden S'han agafat correctament
-              form(action='/feasts', method='POST')
+              form(action='/feasts/coord', method='POST')
                 input#lat.hidden(type='text', name='latitud')
                 input#lon.hidden(type='text', name='longitud')
                 label(for='') Km màxims de distància
