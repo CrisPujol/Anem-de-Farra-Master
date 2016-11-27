@@ -1,13 +1,15 @@
 const fs = require('fs');
 const express = require("express");
-const MongoClient = require("mongodb").MongoClient;
-const ObjectId = require("mongodb").ObjectID;
 const bodyparser = require("body-parser");
 const flash = require('connect-flash');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const db = require('./db');
-const path = require('path')
+const path = require('path');
+const passport = require('passport')
+
+const LocalStrategy = require('passport-local').Strategy;
+const logger = require('morgan');
  
 const prepareParams = require("./middleware/prepareParams");
 const getFeasts = require('./handlers/getFeasts');

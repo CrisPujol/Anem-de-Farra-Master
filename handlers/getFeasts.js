@@ -22,7 +22,7 @@
 
 
 
-
+"use strict"
 
 const feastsAll = require('../models/feasts')
 
