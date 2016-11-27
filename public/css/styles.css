@@ -5,7 +5,7 @@
 /*   color grey: #383838  */
 
 * {
-    font-family: Roboto;
+	font-family: Roboto;
 }
 
 body{
@@ -21,14 +21,34 @@ body{
 	padding-bottom: 70px;
 }
 
+.login{
+	display: flex;
+	justify-content: flex-end;
+}
+
+.login a{
+	padding-left: 20px;
+	margin: 20px 0 20px 8px;
+	color: #32e8b7;
+	font-weight: 300; 
+}
+
+.login a:hover{
+	color: white;
+	text-decoration: none; 
+
+}
+
+
 .logo{
 	background-image: url("../img/anem_farra_logo2.png");
 	height: 168px;
 	width: 170px;
 	background-repeat: no-repeat;
 	background-size: cover;
-	margin-top: 60px;
 	margin-bottom: 30px;
+	display: block;
+	align-self: flex-start;
 }
 
 .geoSearch{
@@ -63,19 +83,19 @@ body{
 }
 
 input::-webkit-input-placeholder {
-color: #c4c4c4 !important;
+	color: #c4c4c4 !important;
 }
- 
+
 input:-moz-placeholder { /* Firefox 18- */
-color: #c4c4c4 !important;  
+	color: #c4c4c4 !important;  
 }
- 
+
 input::-moz-placeholder {  /* Firefox 19+ */
-color: #c4c4c4 !important;  
+	color: #c4c4c4 !important;  
 }
- 
+
 input:-ms-input-placeholder {  
-color: #c4c4c4 !important;  
+	color: #c4c4c4 !important;  
 }
 
 label{
@@ -136,7 +156,7 @@ button.aPropMeu{
 
 button.aPropMeu:hover{
 	background-color: #32e8b7;
-    color: white;
+	color: white;
 }
 
 
@@ -205,21 +225,21 @@ button.aPropMeu:hover{
 	font-size: 15px;
 	font-weight: 400;
 	color: #383838;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    margin-left: 10px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	margin-left: 10px;
 }
 
 .webHall{
 	font-size: 15px;
 	font-weight: 500;
 	color: #383838;
-    text-decoration: none;
+	text-decoration: none;
 }
 
 .webHall:hover{
 	color: #32e8b7;
-    text-decoration: none;
+	text-decoration: none;
 }
 
 
@@ -362,7 +382,7 @@ button.aPropMeu:hover{
 	font-size: 18px;
 	font-weight: 500;
 	color: #32e8b7;
-    text-decoration: none;
+	text-decoration: none;
 }
 
 
@@ -370,8 +390,8 @@ button.aPropMeu:hover{
 	font-size: 15px;
 	font-weight: 300;
 	color: #383838;
-    margin: 0px;
-    margin-top: 10px;
+	margin: 0px;
+	margin-top: 10px;
 }
 
 #map{
@@ -388,8 +408,8 @@ button.aPropMeu:hover{
 .nearFeasts{
 	width: 20%;
 	padding-right: 30px;
-    padding-left: 37px;
-    padding-bottom: 20px;
+	padding-left: 37px;
+	padding-bottom: 20px;
 	border: 1px solid #e5e5e5;
 }
 
@@ -397,8 +417,8 @@ button.aPropMeu:hover{
 	font-size: 16px;
 	font-weight: 700;
 	color: #32e8b7;
-    text-decoration: none;
-    line-height: 20px;
+	text-decoration: none;
+	line-height: 20px;
 }
 
 .nearFeasts h2{
@@ -419,25 +439,30 @@ button.aPropMeu:hover{
 
 @media (max-width: 768px){
 	.fesatsList {
-       width: 100%;
+		width: 100%;
 	}
 
 	.nearFeasts{
 		width: 100%;
 	}
+
+	.geoSearch{
+		border: none;
+	}
+
 	.filtersSearch {
-    padding-left: 15px;
-    margin-top: 50px;
-    }
+		padding-left: 15px;
+		margin-top: 50px;
+	}
 
-    button.aPropMeu {
-    margin-left: 0px;
-    }
+	button.aPropMeu {
+		margin-left: 0px;
+	}
 
-    .success-msg{
-	margin-left: 15px;
+	.success-msg{
+		margin-left: 15px;
 
-}
+	}
 }
 
 
@@ -449,5 +474,14 @@ button.aPropMeu:hover{
 
 	.left{
 		text-align: left;
+	}
+
+	.filtersSearch {
+		padding-left: 15px;
+		margin-top: 50px;
+	}
+
+	.geoSearch{
+		border: none;
 	}
 }	

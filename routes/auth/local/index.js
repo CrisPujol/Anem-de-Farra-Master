@@ -5,7 +5,7 @@ const Account = require('../../../models/account');
 const router = express.Router();
 
 router.get('/register', function(req, res) {
-    res.render('register', { });
+    res.render('register', {});
 });
 
 
@@ -44,11 +44,5 @@ router.get('/logout', function(req, res) {
     res.redirect('/');
 });
 
-
-
-
-router.get('/ping', function(req, res){
-    res.send("pong!", 200);
-});
 
 module.exports = router

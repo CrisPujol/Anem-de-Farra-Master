@@ -5,13 +5,21 @@ html(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(rel="stylesheet", href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
     link(rel="stylesheet", href='/css/styles.css')
-
   body
     header
       .background
         .container
-          a(href='/feasts')
-           .logo
+          .login
+            if (!user)
+              a(href="/local/login") Entra
+              a(href="/local/register") Registra't
+            if (user)
+              p Benvingut #{user.username}
+              a(href="/local/logout") Surt
+          .row
+            .col-md-2
+              a(href='/feasts')
+               span.logo
           .row
             .col-md-6.geoSearch
               h3 Troba les festes majors més a prop teu!
@@ -41,15 +49,8 @@ html(lang='en')
                 label.control-label Quan hi vols anar?
                 input#dataStart.form-control(type='date', name='dataStart')
                 button.btn.btn-default.search(type='submit') Buscar
-        .container      
-          if (!user)
-            a(href="/local/login") Login
-            br
-            a(href="/local/register") Register
-          if (user)
-            p You are currently logged in as #{user.username}
-            a(href="/local/logout") Logout
-          br
+              
+          
     main              
     block content
     block content
