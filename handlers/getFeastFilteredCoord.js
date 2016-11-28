@@ -4,6 +4,7 @@ const feastsAll = require('../models/feasts');
 
 function getFeastFilteredCoord(req, res) {
 
+	console.log("getFeastFilteredCoord...")
 	const { skip, limit, page } = req
 
 	//const region = req.body.regionFeasts;
@@ -13,7 +14,8 @@ function getFeastFilteredCoord(req, res) {
 	const kmMax = +req.body.kmMax || 40;
 
 	let filter;
-
+	console.log("filter:")
+	console.log(filter)
 
 	if( lat && lon ) {
 
@@ -26,6 +28,8 @@ function getFeastFilteredCoord(req, res) {
 		const currentDate = new Date().getTime();
 		const weekLater = new Date(currentDate).getTime() + 7 * 24 * 60 * 60 * 1000; 
 
+		console.log("filterAround:")
+		console.log(filterAround)
 		feastsAll.find(filterAround)
 			.then( feastsAround => {
 				feastsAll.distinct("region")

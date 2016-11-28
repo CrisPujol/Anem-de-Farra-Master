@@ -57,8 +57,7 @@ app.use( prepareParams )
 //PASSPORT
 const AUTH = process.env.AUTH || 'local';
 
-if (AUTH === 'local') {
-	/* @begin LOCAL */
+
 	var Account = require('./models/account');
 	passport.use( new LocalStrategy( Account.authenticate() ) );
 	passport.serializeUser( Account.serializeUser() );
@@ -66,8 +65,6 @@ if (AUTH === 'local') {
 
 	const routerAuthLocal = require('./routes/auth/local')
 	app.use('/local', routerAuthLocal)
-	/* @end LOCAL */
-}
 
 
 
