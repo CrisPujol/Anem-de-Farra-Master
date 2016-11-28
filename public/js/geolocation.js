@@ -5,8 +5,8 @@
 	}
 	
 	function viewMap (position) {
-		var lon = position.coords.longitude;	
-		var lat = position.coords.latitude;
+		const lon = position.coords.longitude;	
+		const lat = position.coords.latitude;
 		$("#lat").val(lat);
 		$("#lon").val(lon);
 		console.log("longitud:" + lon + "-" + "latitud:" + lat );
