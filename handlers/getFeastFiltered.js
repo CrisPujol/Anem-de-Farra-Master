@@ -69,19 +69,16 @@ function getFeastFiltered(req, res) {
 		var formatdate = tempdate[1] + "/" + tempdate[2]  + "/" + tempdate[0];
 		const startDate = new Date(formatdate).getTime();
 
-		filter = { region };
+		filter = { region, startDate };
 
-		feastsAll.find(filter, function (err, feastsRegion){
-			console.log(feastsRegion)
-			if(err) throw err;
-
-			const feasts = feastsRegion.map( elem => elem._doc).filter( elem => {
-				return elem.startDate === startDate;
+		feastsAll.find( filter )
+			.then( feasts => {
+				feastsAll.distinct("region")
+					.then( regions => {
+						console.log(feasts)
+						res.render("feasts", { feasts, regions })
+					})
 			})
-			console.log("-------------------------------")
-			console.log(feasts)
-			res.render("feasts", { feasts })
-		})
 	}
 
 }

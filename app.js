@@ -18,9 +18,10 @@ const getFeastFiltered = require('./handlers/getFeastFiltered');
 const getFeastFilteredCoord = require('./handlers/getFeastFilteredCoord');
 const getFeastbyId = require('./handlers/getFeastbyId');
 
-
 const thereIsDotEnv = fs.existsSync('.env')
 if ( thereIsDotEnv ) require('dotenv').load()
+
+const PORT = process.env.PORT;
 
 const app = express();
 
@@ -105,6 +106,6 @@ function isAuthenticated(req, res, next) {
   res.redirect('/');
 }
 
-app.listen(3000, () => console.log("Listening on port 3000..."))
+app.listen(PORT, () => console.log(`Listening on port ${PORT}...`))
 
 module.exports = app;
