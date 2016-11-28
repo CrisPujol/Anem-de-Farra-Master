@@ -8,7 +8,7 @@ function getFeastFiltered(req, res) {
 	const region = req.body.regionFeasts;
 	const date = req.body.dataStart;
 
-	var filter;
+	let filter;
 
 
 	if (region) {
@@ -24,7 +24,7 @@ function getFeastFiltered(req, res) {
 				}
 
 				else{
-					var firstfeast = feasts[0];
+					const firstfeast = feasts[0];
 					const latitude = firstfeast.coordRegion[1];
 					const longitude = firstfeast.coordRegion[0];
 					const km = 10;
@@ -44,8 +44,8 @@ function getFeastFiltered(req, res) {
 
 
 	if (date) {
-		var tempdate = date.split("-");
-		var formatdate = tempdate[1] + "/" + tempdate[2]  + "/" + tempdate[0];
+		let tempdate = date.split("-");
+		let formatdate = tempdate[1] + "/" + tempdate[2]  + "/" + tempdate[0];
 		const startDate = new Date(formatdate).getTime();
 
 		filter = { startDate }
@@ -66,8 +66,8 @@ function getFeastFiltered(req, res) {
 
 
 	if(region && date){
-		var tempdate = date.split("-");
-		var formatdate = tempdate[1] + "/" + tempdate[2]  + "/" + tempdate[0];
+		let tempdate = date.split("-");
+		let formatdate = tempdate[1] + "/" + tempdate[2]  + "/" + tempdate[0];
 		const startDate = new Date(formatdate).getTime();
 
 		filter = { region, startDate };

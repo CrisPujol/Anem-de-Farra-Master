@@ -1,4 +1,5 @@
 "use strict"
+
 const feastsAll = require('../models/feasts');
 
 function getFeastFilteredCoord(req, res) {
@@ -14,12 +15,13 @@ function getFeastFilteredCoord(req, res) {
 	var filter;
 
 
-		if( lat && lon ){
-		var km = kmMax;
-		var longitude = lon;
-		var latitude = lat;
+	if( lat && lon ) {
 
-		filterAround = getFilterCoord(latitude, longitude, km);
+		let km = kmMax;
+		let longitude = lon;
+		let latitude = lat;
+
+		const filterAround = getFilterCoord(latitude, longitude, km);
 
 		const currentDate = new Date().getTime();
 		const weekLater = new Date(currentDate).getTime() + 7 * 24 * 60 * 60 * 1000; 
