@@ -1,7 +1,7 @@
     $(".error-msg").fadeOut(5000);
 
 	function loadLocation () {
-		navigator.geolocation.getCurrentPosition(viewMap,ViewError,{timeout:2000});
+		navigator.geolocation.getCurrentPosition(viewMap,ViewError);
 	}
 	
 	function viewMap (position) {
