@@ -1,3 +1,4 @@
+"use strict"
 const feastsAll = require('../models/feasts');
 
 function getFeastFilteredCoord(req, res) {

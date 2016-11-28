@@ -1,3 +1,5 @@
+"use strict"
+
 const feastsAll = require('../models/feasts');
 
 function getFeastbyId(req, res) {
