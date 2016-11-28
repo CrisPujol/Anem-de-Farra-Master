@@ -12,7 +12,7 @@ function getFeastFilteredCoord(req, res) {
 	const lon = +req.body.longitud;
 	const kmMax = +req.body.kmMax || 40;
 
-	var filter;
+	let filter;
 
 
 	if( lat && lon ) {
