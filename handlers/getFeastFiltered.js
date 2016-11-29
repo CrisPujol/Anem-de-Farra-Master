@@ -8,9 +8,9 @@ function getFeastFiltered(req, res) {
 	const region = req.body.regionFeasts;
 	const date = req.body.dataStart;
 
-	console.log("__req.body.dataStart___")
+	console.log("Date input")
 	console.log(date)
-	console.log("------------------------------------------------------------")
+	console.log("_____________________________________")
 
 	let filter;
 
@@ -73,45 +73,39 @@ function getFeastFiltered(req, res) {
 
 		const user = req.user
 
-		
-
 		const tempdate = date.split("-");
 
-		console.log("----- else if(date) ---- ") 
-		console.log("----- tempdate ---- ")
+		console.log("split")
 		console.log(tempdate)
-
-		console.log("------------------------------------------------------------------- ")
+		console.log("_____________________________________")
 
 		const formatdate = tempdate[1] + "/" + tempdate[2]  + "/" + tempdate[0];
 
-		console.log("----- formatdate ---- ")
+		console.log("format new")
 		console.log(formatdate)
-		console.log("------------------------------------------------------------------- ")
+		console.log("_____________________________________")
 
 
-		const startDate = new Date(formatdate).getTime();
+		const startDate = new Date(date).getTime();
 
-		console.log("----- startDate ---- ")
+		console.log("filter")
 		console.log(startDate)
-		console.log("------------------------------------------------------------------- ")
+		console.log("_____________________________________")
+
 
 		filter = { startDate }
-		console.log(filter)
+		
 
 		feastsAll.find(filter)
 			.then ( feasts => {
 				feastsAll.distinct("region")
 				.then( regions => {
 					if(feasts.length === 0){
-						console.log(feasts)
-						console.log("-------------------------")
 						const noResult = "Ho sentim, no hi ha resultats";
 						const opcioB = "Sofà i pel·lícula no és una mala opció";
 						res.render("feasts", { feasts, noResult, opcioB, regions, anchor: 'anchor', user })
 					}
 					else{
-						console.log(feasts)
 						res.render("feasts", { feasts, regions, anchor: 'anchor', user })
 					}
 					
