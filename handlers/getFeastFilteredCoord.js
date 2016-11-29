@@ -19,6 +19,7 @@ function getFeastFilteredCoord(req, res) {
 		let km = kmMax;
 		let longitude = lon;
 		let latitude = lat;
+		const user = req.user
 
 		const filterAround = getFilterCoord(latitude, longitude, km);
 
@@ -37,7 +38,7 @@ function getFeastFilteredCoord(req, res) {
 						const noResult = "Ho sentim, no hi ha resultats";
 						res.render("feasts", { feasts , noResult, regions })
 					}
-					res.render("feasts", { feasts , weekMsg, regions, anchor: 'anchor' })
+					res.render("feasts", { feasts , weekMsg, regions, anchor: 'anchor', user })
 				})
 			})
 			.catch( err => new Error(err) )
@@ -47,10 +48,11 @@ function getFeastFilteredCoord(req, res) {
 
 
 	if( kmMax && lat === 0 ){
+		const user = req.user
 		feastsAll.distinct("region")
 			.then ( regions =>{
 				const message = req.flash('message')
-				res.render('index', { message, message, regions, anchor: 'anchor' });
+				res.render('index', { message, message, regions, anchor: 'anchor', user });
 			})
 			.catch( err => new Error(err) )
 	}

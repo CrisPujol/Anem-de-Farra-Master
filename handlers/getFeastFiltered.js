@@ -10,9 +10,30 @@ function getFeastFiltered(req, res) {
 
 	let filter;
 
+		if(region && date){
 
-	if (region) {
+		const user = req.user
+
+		let tempdate = date.split("-");
+		let formatdate = tempdate[1] + "/" + tempdate[2]  + "/" + tempdate[0];
+		const startDate = new Date(formatdate).getTime();
+
+		filter = { region, startDate };
+
+		feastsAll.find( filter )
+			.then( feasts => {
+				feastsAll.distinct("region")
+					.then( regions => {
+						res.render("feasts", { feasts, regions, anchor: 'anchor', user })
+					})
+			})
+		}
+
+
+	else if (region) {
 		filter = { region }
+
+		const user = req.user
 
 		feastsAll.find(filter)
 		.then( feasts => {
@@ -20,7 +41,7 @@ function getFeastFiltered(req, res) {
 			.then( regions =>{
 				if(feasts.length === 0){
 					const noResult = "Ho sentim, no hi ha resultats";
-					res.render("feasts", { feasts, noResult, regions, anchor: 'anchor' })
+					res.render("feasts", { feasts, noResult, regions, anchor: 'anchor', user })
 				}
 
 				else{
@@ -33,7 +54,7 @@ function getFeastFiltered(req, res) {
 
 					feastsAll.find(filterArround)
 						.then( nearFeasts => {
-							res.render("feasts", { feasts, regions, nearFeasts, anchor: 'anchor' })
+							res.render("feasts", { feasts, regions, nearFeasts, anchor: 'anchor', user })
 						})	
 				}
 				
@@ -43,7 +64,10 @@ function getFeastFiltered(req, res) {
 	}
 
 
-	if (date) {
+	else if (date) {
+
+		const user = req.user
+
 		let tempdate = date.split("-");
 		let formatdate = tempdate[1] + "/" + tempdate[2]  + "/" + tempdate[0];
 		const startDate = new Date(formatdate).getTime();
@@ -56,31 +80,16 @@ function getFeastFiltered(req, res) {
 				if(feasts.length === 0){
 					const noResult = "Ho sentim, no hi ha resultats";
 					const opcioB = "Sofà i pel·lícula no és una mala opció";
-					res.render("feasts", { feasts, noResult, opcioB, regions, anchor: 'anchor' })
+					res.render("feasts", { feasts, noResult, opcioB, regions, anchor: 'anchor', user })
 				}
-				res.render("feasts", { feasts, regions, anchor: 'anchor' })
+				res.render("feasts", { feasts, regions, anchor: 'anchor', user })
 			})
 		})
 		.catch( err => new Error(err) )
 	}
 
 
-	if(region && date){
-		let tempdate = date.split("-");
-		let formatdate = tempdate[1] + "/" + tempdate[2]  + "/" + tempdate[0];
-		const startDate = new Date(formatdate).getTime();
 
-		filter = { region, startDate };
-
-		feastsAll.find( filter )
-			.then( feasts => {
-				feastsAll.distinct("region")
-					.then( regions => {
-						console.log(feasts)
-						res.render("feasts", { feasts, regions, anchor: 'anchor' })
-					})
-			})
-	}
 
 }
 
