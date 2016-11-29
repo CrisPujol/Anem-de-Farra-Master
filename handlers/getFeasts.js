@@ -28,6 +28,8 @@ const feastsAll = require('../models/feasts')
 
 function getFeasts(req, res) {
 
+	const user = req.user
+
 	//const { skip, limit, page } = req
 	//const options = req.locals.queryOptions;
 	const currentDate = new Date().getTime();
@@ -37,7 +39,7 @@ function getFeasts(req, res) {
 		.then( feasts => {
 			feastsAll.distinct("region")
 				.then( regions => {
-					res.render("feasts", { feasts, regions })
+					res.render("feasts", { feasts, regions, user })
 				})
 		})
 		.catch( err => new Error(err) )

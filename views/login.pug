@@ -10,6 +10,8 @@ html
   body
   .container
     .loginIn
+      if (failureFlash)
+        h1 wjhfjhjhrejh
       h1 Entra al teu perfil
       form(role='form', action="/local/login",method="post", style='max-width: 400px;')
         .form-group

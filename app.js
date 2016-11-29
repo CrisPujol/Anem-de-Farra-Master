@@ -42,21 +42,10 @@ app.use( passport.initialize() );
 app.use( passport.session() );
 
 
-// GET AND FILTER FEASTS
-app.use( prepareParams )
-	
-	app.get('/', getFeasts )
-	app.get('/feasts', getFeasts )
-	app.post('/feasts', getFeastFiltered )
-	app.post('/feasts/coord', getFeastFilteredCoord )
-	app.get('/feast/:id', getFeastbyId )
-
-
 
 
 //PASSPORT
 const AUTH = process.env.AUTH || 'local';
-
 
 	var Account = require('./models/account');
 	passport.use( new LocalStrategy( Account.authenticate() ) );
@@ -67,41 +56,15 @@ const AUTH = process.env.AUTH || 'local';
 	app.use('/local', routerAuthLocal)
 
 
+// GET AND FILTER FEASTS
+app.use( prepareParams )
+	
+	app.get('/', getFeasts )
+	app.get('/feasts', getFeasts )
+	app.post('/feasts', getFeastFiltered )
+	app.post('/feasts/coord', getFeastFilteredCoord )
+	app.get('/feast/:id', getFeastbyId )
 
-
-
-// // routes
-
-app.get('/', function (req, res) {
-	const user = req.user;
-	const auth_method = AUTH;
-  res.render('index', { user, auth_method });
-});
-
-
-app.get('/account', isAuthenticated, (req, res) => {
-
-	const userId = req.session.passport.user;
-	const message = req.flash('message');
-
-	User.findById( userId )
-		.then( user => res.render( 'account', { user, message } ) )
-		.catch( console.log )
-});
-
-
-app.get('/logout', (req, res) => {
-  req.logout();
-  res.redirect('/');
-});
-
-
-
-// // test authentication
-function isAuthenticated(req, res, next) {
-  if ( req.isAuthenticated() ) return next();
-  res.redirect('/');
-}
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}...`))
 
