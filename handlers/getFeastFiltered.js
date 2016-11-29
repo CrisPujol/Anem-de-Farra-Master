@@ -1,4 +1,4 @@
-"use strict"
+//"use strict"
 const feastsAll = require('../models/feasts');
 
 function getFeastFiltered(req, res) {
@@ -86,8 +86,10 @@ function getFeastFiltered(req, res) {
 		console.log("_____________________________________")
 
 
-		const startDate1 = new Date(date).getTime();
-		const startDate = startDate1 - 3600000;
+		//const startDate = new Date(date).getTime();
+		//const startDate = startDate1 - 3600000;
+		const startDate1 = new Date(date)
+		const startDate = startDate1.setHours(00, 00, 00);
 
 
 		console.log("filter")
