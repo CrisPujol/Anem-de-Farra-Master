@@ -86,7 +86,9 @@ function getFeastFiltered(req, res) {
 		console.log("_____________________________________")
 
 
-		const startDate = new Date(date).getTime();
+		const startDate1 = new Date(date).getTime();
+		const startDate = startDate1 - 3600000;
+
 
 		console.log("filter")
 		console.log(startDate)
