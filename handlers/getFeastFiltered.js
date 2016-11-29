@@ -8,14 +8,14 @@ function getFeastFiltered(req, res) {
 	const region = req.body.regionFeasts;
 	const date = req.body.dataStart;
 
-	let filter;
+	const filter;
 
 	if(region && date){
 
 		const user = req.user
 
-		let tempdate = date.split("-");
-		let formatdate = tempdate[1] + "/" + tempdate[2]  + "/" + tempdate[0];
+		const tempdate = date.split("-");
+		const formatdate = tempdate[1] + "/" + tempdate[2]  + "/" + tempdate[0];
 		const startDate = new Date(formatdate).getTime();
 
 		filter = { region, startDate };
@@ -68,27 +68,32 @@ function getFeastFiltered(req, res) {
 
 		const user = req.user
 
-		let tempdate = date.split("-");
-		let formatdate = tempdate[1] + "/" + tempdate[2]  + "/" + tempdate[0];
+		const tempdate = date.split("-");
+		const formatdate = tempdate[1] + "/" + tempdate[2]  + "/" + tempdate[0];
 		const startDate = new Date(formatdate).getTime();
 
 		filter = { startDate }
+		console.log(filter)
+
 		feastsAll.find(filter)
-		.then ( feasts => {
-			feastsAll.distinct("region")
-			.then( regions => {
-				if(feasts.length === 0){
-					const noResult = "Ho sentim, no hi ha resultats";
-					const opcioB = "Sofà i pel·lícula no és una mala opció";
-					res.render("feasts", { feasts, noResult, opcioB, regions, anchor: 'anchor', user })
-				}
-				else{
-					res.render("feasts", { feasts, regions, anchor: 'anchor', user })
-				}
-				
+			.then ( feasts => {
+				feastsAll.distinct("region")
+				.then( regions => {
+					if(feasts.length === 0){
+						console.log(feasts)
+						console.log("-------------------------")
+						const noResult = "Ho sentim, no hi ha resultats";
+						const opcioB = "Sofà i pel·lícula no és una mala opció";
+						res.render("feasts", { feasts, noResult, opcioB, regions, anchor: 'anchor', user })
+					}
+					else{
+						console.log(feasts)
+						res.render("feasts", { feasts, regions, anchor: 'anchor', user })
+					}
+					
+				})
 			})
-		})
-		.catch( err => new Error(err) )
+			.catch( err => new Error(err) )
 	}
 
 
