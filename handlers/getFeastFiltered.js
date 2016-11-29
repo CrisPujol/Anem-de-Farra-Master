@@ -8,7 +8,7 @@ function getFeastFiltered(req, res) {
 	const region = req.body.regionFeasts;
 	const date = req.body.dataStart;
 
-	const filter;
+	let filter;
 
 	if(region && date){
 
@@ -31,6 +31,7 @@ function getFeastFiltered(req, res) {
 
 
 	else if (region) {
+		
 		filter = { region }
 
 		const user = req.user
