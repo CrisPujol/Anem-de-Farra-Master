@@ -13,8 +13,8 @@ const feastsSchema = mongoose.Schema({
     place: String,
     shschedule: String,
     hallweb: String,
-    startDate: Date,
-    finishDate: Date,
+    startDate: Number,
+    finishDate: Number,
     startDateTxt: String,
     finishDateTxt: String
 },
