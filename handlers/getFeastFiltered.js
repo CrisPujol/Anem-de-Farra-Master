@@ -10,7 +10,7 @@ function getFeastFiltered(req, res) {
 
 	let filter;
 
-		if(region && date){
+	if(region && date){
 
 		const user = req.user
 
@@ -21,13 +21,13 @@ function getFeastFiltered(req, res) {
 		filter = { region, startDate };
 
 		feastsAll.find( filter )
-			.then( feasts => {
-				feastsAll.distinct("region")
-					.then( regions => {
-						res.render("feasts", { feasts, regions, anchor: 'anchor', user })
-					})
+		.then( feasts => {
+			feastsAll.distinct("region")
+			.then( regions => {
+				res.render("feasts", { feasts, regions, anchor: 'anchor', user })
 			})
-		}
+		})
+	}
 
 
 	else if (region) {
@@ -53,9 +53,9 @@ function getFeastFiltered(req, res) {
 					const filterArround = getFilterCoord(latitude,longitude,km)
 
 					feastsAll.find(filterArround)
-						.then( nearFeasts => {
-							res.render("feasts", { feasts, regions, nearFeasts, anchor: 'anchor', user })
-						})	
+					.then( nearFeasts => {
+						res.render("feasts", { feasts, regions, nearFeasts, anchor: 'anchor', user })
+					})	
 				}
 				
 			})
@@ -82,7 +82,10 @@ function getFeastFiltered(req, res) {
 					const opcioB = "Sofà i pel·lícula no és una mala opció";
 					res.render("feasts", { feasts, noResult, opcioB, regions, anchor: 'anchor', user })
 				}
-				res.render("feasts", { feasts, regions, anchor: 'anchor', user })
+				else{
+					res.render("feasts", { feasts, regions, anchor: 'anchor', user })
+				}
+				
 			})
 		})
 		.catch( err => new Error(err) )
