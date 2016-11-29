@@ -26,6 +26,13 @@ body{
 	justify-content: flex-end;
 }
 
+.hello{
+	padding-left: 20px;
+	margin: 20px 0 20px 8px;
+	color: white;
+	font-weight: 500; 
+}
+
 .login a{
 	padding-left: 20px;
 	margin: 20px 0 20px 8px;

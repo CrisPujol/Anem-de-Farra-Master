@@ -37,7 +37,7 @@ function getFeastFilteredCoord(req, res) {
 						const noResult = "Ho sentim, no hi ha resultats";
 						res.render("feasts", { feasts , noResult, regions })
 					}
-					res.render("feasts", { feasts , weekMsg, regions })
+					res.render("feasts", { feasts , weekMsg, regions, anchor: 'anchor' })
 				})
 			})
 			.catch( err => new Error(err) )
@@ -50,7 +50,7 @@ function getFeastFilteredCoord(req, res) {
 		feastsAll.distinct("region")
 			.then ( regions =>{
 				const message = req.flash('message')
-				res.render('index', { message, message, regions });
+				res.render('index', { message, message, regions, anchor: 'anchor' });
 			})
 			.catch( err => new Error(err) )
 	}

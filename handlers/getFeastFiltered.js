@@ -20,7 +20,7 @@ function getFeastFiltered(req, res) {
 			.then( regions =>{
 				if(feasts.length === 0){
 					const noResult = "Ho sentim, no hi ha resultats";
-					res.render("feasts", { feasts, noResult, regions })
+					res.render("feasts", { feasts, noResult, regions, anchor: 'anchor' })
 				}
 
 				else{
@@ -33,7 +33,7 @@ function getFeastFiltered(req, res) {
 
 					feastsAll.find(filterArround)
 						.then( nearFeasts => {
-							res.render("feasts", { feasts, regions, nearFeasts })
+							res.render("feasts", { feasts, regions, nearFeasts, anchor: 'anchor' })
 						})	
 				}
 				
@@ -56,9 +56,9 @@ function getFeastFiltered(req, res) {
 				if(feasts.length === 0){
 					const noResult = "Ho sentim, no hi ha resultats";
 					const opcioB = "Sofà i pel·lícula no és una mala opció";
-					res.render("feasts", { feasts, noResult, opcioB, regions })
+					res.render("feasts", { feasts, noResult, opcioB, regions, anchor: 'anchor' })
 				}
-				res.render("feasts", { feasts, regions })
+				res.render("feasts", { feasts, regions, anchor: 'anchor' })
 			})
 		})
 		.catch( err => new Error(err) )
@@ -77,7 +77,7 @@ function getFeastFiltered(req, res) {
 				feastsAll.distinct("region")
 					.then( regions => {
 						console.log(feasts)
-						res.render("feasts", { feasts, regions })
+						res.render("feasts", { feasts, regions, anchor: 'anchor' })
 					})
 			})
 	}

@@ -14,7 +14,7 @@ html(lang='en')
               a(href="/local/login") Entra
               a(href="/local/register") Registra't
             if (user)
-              p Benvingut #{user.username}
+              p.hello Hola #{user.username}
               a(href="/local/logout") Surt
           .row
             .col-md-2

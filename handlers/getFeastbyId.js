@@ -10,7 +10,7 @@ function getFeastbyId(req, res) {
 		.then( feast => {
 			feastsAll.distinct("region")
 				.then( regions => {
-					res.render("details", { feast, regions } )
+					res.render("details", { feast, regions, anchor: 'anchor' } )
 				})
 		})
 		.catch( err => new Error(err) )

@@ -30,8 +30,9 @@ block content
                   a(class="title", data-id=feasts._id, href="/feast/" + feasts._id)= feasts.name
                   h2= feasts.startDateTxt  + " - " + feasts.finishDateTxt
                   h6= feasts.region     
-               
-    script.
-        window.onload = window.location.hash = '#container';
+    if anchor
+      script.
+          window.onload = window.location.hash = '#container';           
+    
 
 
