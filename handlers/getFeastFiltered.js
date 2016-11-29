@@ -64,7 +64,7 @@ function getFeastFiltered(req, res) {
 	}
 
 
-	else  {
+	else if(date){
 
 		const user = req.user
 
