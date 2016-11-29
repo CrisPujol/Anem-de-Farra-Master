@@ -7,7 +7,10 @@ function getFeastFiltered(req, res) {
 
 	const region = req.body.regionFeasts;
 	const date = req.body.dataStart;
+
+	console.log("__req.body.dataStart___")
 	console.log(date)
+	console.log("------------------------------------------------------------")
 
 	let filter;
 
@@ -70,11 +73,28 @@ function getFeastFiltered(req, res) {
 
 		const user = req.user
 
+		
+
 		const tempdate = date.split("-");
+
+		console.log("----- else if(date) ---- ") 
+		console.log("----- tempdate ---- ")
+		console.log(tempdate)
+
+		console.log("------------------------------------------------------------------- ")
+
 		const formatdate = tempdate[1] + "/" + tempdate[2]  + "/" + tempdate[0];
+
+		console.log("----- formatdate ---- ")
+		console.log(formatdate)
+		console.log("------------------------------------------------------------------- ")
+
+
 		const startDate = new Date(formatdate).getTime();
 
+		console.log("----- startDate ---- ")
 		console.log(startDate)
+		console.log("------------------------------------------------------------------- ")
 
 		filter = { startDate }
 		console.log(filter)
