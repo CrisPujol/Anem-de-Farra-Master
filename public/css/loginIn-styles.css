@@ -37,3 +37,11 @@ body{
 	border: none;
 	margin-left: 18px;
 }
+
+
+.error-msg{
+	color:#fe1435;
+	margin-top: 10px;
+	font-size: 14px;
+	margin-top: 25px;
+}

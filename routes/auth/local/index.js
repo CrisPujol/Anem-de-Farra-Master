@@ -27,22 +27,22 @@ router.post('/register', function(req, res) {
 
 
 router.get('/login', function(req, res) {
-    res.render('login', { user : req.user });
+    res.render('login', { message : req.flash("error") });
 });
 
 
 
 
-router.post('/login', passport.authenticate('local'), function(req, res) {
-    res.redirect('/');
-});
+// router.post('/login', passport.authenticate('local'), function(req, res) {
+//     res.redirect('/');
+// });
 
 
-// router.post('/login',
-//     passport.authenticate('local', { successRedirect: '/',
-//                                      failureRedirect: '#',
-//                                      failureFlash: true })
-// );
+router.post('/login',
+    passport.authenticate('local', { successRedirect: '/',
+                                     failureRedirect: '/local/login',
+                                     failureFlash: "Usuari o password són incorrectes" })
+);
 
 
 router.get('/logout', function(req, res) {
