@@ -38,9 +38,10 @@ function createFeast(req, res) {
 	const data = { name, region, shire, place, shschedule, hallweb, barservice, parking, wc, info, program, coordRegion, startDate, finishDate, startDateTxt, finishDateTxt, username, idUser }
 	
        const newFeast = new feastsAll(data);
-            newFeast.save((err, newfeast) =>{
+            newFeast.save((err, feast) =>{
+            	console.log(feast)
                 if(err) return (err)
-                res.redirect("/")
+                res.redirect("/feast/" + feast._id)
             })
 
 }

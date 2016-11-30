@@ -16,6 +16,27 @@ block content
             .col-xs-6.col-sm-3.col-md-2.text-center.left
               span.placeDetails
               p= feast.place
+        .moreDetails
+          if (feast.barservice)
+            .barService
+              h4 Servei de barra
+              p= feast.barservice
+          if (feast.wc)
+            .wcService
+              h4 Servei de lavabos
+              p= feast.wc
+          if (feast.parking)
+            .parking
+              h4 Aparcament
+              p= feast.parking    
+          if (feast.program)
+            .program
+              h4 Programa
+              p= feast.program    
+          if (feast.info)
+            .info
+              h4 Informació addicional
+              p= feast.info        
         #map
               
     script.

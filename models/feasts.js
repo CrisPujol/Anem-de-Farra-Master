@@ -22,7 +22,8 @@ const feastsSchema = mongoose.Schema({
     info: String,
     program: String,
     username: String,
-    idUser: String
+    idUser: String,
+    wc: String
 },
 { collection });
 

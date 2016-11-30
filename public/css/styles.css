@@ -320,9 +320,39 @@ button.aPropMeu:hover{
 	width: auto;
 }
 
+.moreDetails{
+	display: flex;
+	flex-wrap: wrap;
+	margin: 30px 0 60px 0;
+	/*border-top: 1px solid #cbcbcb;*/
+	padding-top: 20px;
+}
+
+.barService, .wcService, .parking{
+	width: 33.333333333333333333333333333%;
+	border:1px solid #e5e6e6;
+	padding: 20px;
+}
+
+.program, .info{
+	width: 50%;
+	border:1px solid #e5e6e6;
+	padding: 20px;
+
+}
 
 
+.moreDetails h4{
+	font-size: 15px;
+	margin-bottom: 5px;
+	color: #383838;
+	font-weight: 700;
+}
 
+.moreDetails p{
+	font-size: 15px;
+	color: #383838;
+}
 
 /*details*/
 
@@ -511,6 +541,15 @@ button.aPropMeu:hover{
 		margin-left: 15px;
 
 	}
+
+	.barService, .wcService, .parking, .program, .info{
+		width: 100%;
+		
+	}
+
+
+
+
 }
 
 

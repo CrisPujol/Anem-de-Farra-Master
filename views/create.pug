@@ -15,41 +15,41 @@ html
         form(action='/create', method='POST')
           .col-md-5
             label Nom de la festa
-            input.form-control(type='text', name='name', placeholder='ex. FIres de Sant Narcís')
+            input.form-control(type='text', name='name', placeholder='FIres de Sant Narcís...', required)
           .col-md-4
             label Municipi
-            input.form-control(type='text', name='region', placeholder='ex. Girona')
+            input.form-control(type='text', name='region', placeholder='Girona...', required)
           .col-md-3
             label Comarca
-            input.form-control(type='text', name='shire', placeholder='ex. El Gironès')
+            input.form-control(type='text', name='shire', placeholder='El Gironès...', required)
           .col-md-12
             h4 Coordenades
           .col-md-4
-            label Latitut
-            input#lat.form-control(type='text', name='latitud')
+            label Latitud
+            input#lat.form-control(type='text', name='latitud', placeholder="41.5667...", required)
           .col-md-4
             label Longitud
-            input#lon.form-control(type='text', name='longitud')
+            input#lon.form-control(type='text', name='longitud', placeholder="2.0167...", required)
           .col-md-4
             label Lloc
-            input.form-control(type='text', name='place', placeholder='ex. Al centre')
+            input.form-control(type='text', name='place', placeholder='Al centre')
           .col-md-4
             label Data d'inici
-            input.form-control(type='date', name='startDateFeast')
+            input.form-control(type='date', name='startDateFeast', required)
           .col-md-4
             label Data de tancament
-            input.form-control(type='date', name='finishDateFeast')
+            input.form-control(type='date', name='finishDateFeast', required)
           .col-md-4
             label Horari
-            input.form-control(type='text', name='shschedule', placeholder='ex. Tot el dia...')
+            input.form-control(type='text', name='shschedule', placeholder='Tot el dia...')
           .col-md-12
             label Web
-            input.form-control(type='url', name='hallweb', placeholder='ex. http://...')
+            input.form-control(type='url', name='hallweb', placeholder='http://...')
           .col-md-12
             h4 Serveis
           .col-md-4
             label Servei de barra
-            input.form-control(type='text', name='barservice', placeholder='SI / NO')
+            input.form-control(type='text', name='barservice')
           .col-md-4
             label Aparcament
             input.form-control(type='text', name='parking')
