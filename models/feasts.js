@@ -20,7 +20,9 @@ const feastsSchema = mongoose.Schema({
     barservice: String,
     parking: String,
     info: String,
-    program: String
+    program: String,
+    username: String,
+    idUser: String
 },
 { collection });
 

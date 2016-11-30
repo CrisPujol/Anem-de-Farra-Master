@@ -4,42 +4,44 @@ const feastsAll = require('../models/feasts')
 
 function createFeast(req, res) {
 
-	// const name = req.body.name;
-	// const region = req.body.region;
-	// const shire = req.body.shire;
-	// const place = req.body.place;
-	// const shschedule = req.body.shschedule;
-	// const hallweb = req.body.hallweb;
-	// const barservice = req.body.barservice;
-	// const parking = req.body.parking;
-	// const wc = req.body.wc;
-	// const info = req.body.info;
-	// const program = req.body.program;
+	var { name, region, shire, place, shschedule, hallweb, barservice, parking, wc, info, program } = req.body
+	var { latitud, longitud } = req.body
+	var { startDateFeast , finishDateFeast } = req.body
 
-	// const latitud = +req.body.latitud;
-	// const longitud = +req.body.longitud;
-	// const coordRegion = [ longitud, latitud ];
-	// console.log(coordRegion)
+	const username = req.body.username
+	const idUser = req.body.idUser
 
 
-	// const dateReqStart = req.body.startDate;
+	latitud = +latitud;
+	longitud = +longitud;
+	const coordRegion = [ longitud, latitud ];
 
-	// const tempdate = dateReq.split("-");
-	// const formatdate = tempdate[1] + "/" + tempdate[2]  + "/" + tempdate[0];
-	// const startDate1 = new Date(date)
-	// const startDate = startDate1.setHours(00, 00, 00);
+	//Format seconds start date 
+	const startDateTemp = new Date(startDateFeast)
+	const startDate = startDateTemp.setHours(00, 00, 00);
 
-	// console.log(startDate)
+	//Format text start date 
+	const startDateFeastSplit = startDateFeast.split("-");
+	const startDateTxt = startDateFeastSplit[2] + "/" + startDateFeastSplit[1] + "/" + startDateFeastSplit[0];
+
+	//Format seconds finish date 
+	const finishDateTemp = new Date(finishDateFeast)
+	const finishDate = finishDateTemp.setHours(00, 00, 00);
+
+	//Format text finish date
+	const finishDateFeastSplit = finishDateFeast.split("-");
+	const finishDateTxt = finishDateFeastSplit[2] + "/" + finishDateFeastSplit[1] + "/" + finishDateFeastSplit[0];
 
 
-	// const dateReqFinish = req.body.finishDate;
-
-	// const tempdateF = dateReqFinish.split("-");
-	// const formatdateF = tempdateF[1] + "/" + tempdateF[2]  + "/" + tempdateF[0];
-	// const finishDate1 = new Date(date)
-	// const startDate = startDate1.setHours(00, 00, 00);
 
 
+	const data = { name, region, shire, place, shschedule, hallweb, barservice, parking, wc, info, program, coordRegion, startDate, finishDate, startDateTxt, finishDateTxt, username, idUser }
+	
+       const newFeast = new feastsAll(data);
+            newFeast.save((err, newfeast) =>{
+                if(err) return (err)
+                res.redirect("/")
+            })
 
 }
 

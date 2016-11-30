@@ -35,10 +35,10 @@ html
             input.form-control(type='text', name='place', placeholder='ex. Al centre')
           .col-md-4
             label Data d'inici
-            input.form-control(type='date', name='startDate')
+            input.form-control(type='date', name='startDateFeast')
           .col-md-4
             label Data de tancament
-            input.form-control(type='date', name='finishDate')
+            input.form-control(type='date', name='finishDateFeast')
           .col-md-4
             label Horari
             input.form-control(type='text', name='shschedule', placeholder='ex. Tot el dia...')
@@ -61,7 +61,9 @@ html
             textarea#program.form-control(rows='8', name='program')  
           .col-md-6
             label Informació addicional
-            textarea#additionalIinfo.form-control(rows='8', name='info')  
+            textarea#additionalIinfo.form-control(rows='8', name='info')
+            input.form-control(type='text', name='username', value=user.username) 
+            input.form-control(type='text', name='idUser', value=user._id) 
           .col-md-12
             button.btn.btn-default.newFeast(type='submit') Crear
 

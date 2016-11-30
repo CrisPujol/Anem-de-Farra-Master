@@ -66,7 +66,8 @@ app.use( prepareParams )
 	app.post('/feasts/coord', getFeastFilteredCoord )
 	app.get('/feast/:id', getFeastbyId )
 	app.get('/create', function(req, res){
-		res.render("create")
+		const user = req.user
+		res.render("create", {user})
 	})
 	app.post('/create', createFeast )
 
