@@ -62,8 +62,8 @@ html
           .col-md-6
             label Informació addicional
             textarea#additionalIinfo.form-control(rows='8', name='info')
-            input.form-control(type='text', name='username', value=user.username) 
-            input.form-control(type='text', name='idUser', value=user._id) 
+            input.form-control.hidden(type='text', name='username', value=user.username) 
+            input.form-control.hidden(type='text', name='idUser', value=user._id) 
           .col-md-12
             button.btn.btn-default.newFeast(type='submit') Crear
 
