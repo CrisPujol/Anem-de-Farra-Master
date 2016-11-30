@@ -8,20 +8,14 @@ function getFeastFiltered(req, res) {
 	const region = req.body.regionFeasts;
 	const date = req.body.dataStart;
 
-	console.log("Date input")
-	console.log(date)
-	console.log("_____________________________________")
-
 	let filter;
 
 	if(region && date){
 
 		const user = req.user
 
-		const tempdate = date.split("-");
-		const formatdate = tempdate[1] + "/" + tempdate[2]  + "/" + tempdate[0];
-		const startDate1 = new Date(date)
-		const startDate = startDate1.setHours(00, 00, 00);
+		const startDateTemp = new Date(date)
+		const startDate = startDateTemp.setHours(00, 00, 00);
 
 		filter = { region, startDate };
 
@@ -74,11 +68,8 @@ function getFeastFiltered(req, res) {
 
 		const user = req.user
 
-		const tempdate = date.split("-");
-		const formatdate = tempdate[1] + "/" + tempdate[2]  + "/" + tempdate[0];
-		const startDate1 = new Date(date)
-		const startDate = startDate1.setHours(00, 00, 00);
-
+		const startDateTemp = new Date(date)
+		const startDate = startDateTemp.setHours(00, 00, 00);
 
 		filter = { startDate }
 		

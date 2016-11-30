@@ -16,8 +16,11 @@ const feastsSchema = mongoose.Schema({
     startDate: Number,
     finishDate: Number,
     startDateTxt: String,
-    finishDateTxt: String
-
+    finishDateTxt: String,
+    barservice: String,
+    parking: String,
+    info: String,
+    program: String
 },
 { collection });
 

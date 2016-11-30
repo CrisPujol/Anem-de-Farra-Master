@@ -1,25 +1,46 @@
 
-"use strict"
 
-const createFeast = require('../models/feasts')
+const feastsAll = require('../models/feasts')
 
-function getFeasts(req, res) {
+function createFeast(req, res) {
 
-	const user = req.user
+	// const name = req.body.name;
+	// const region = req.body.region;
+	// const shire = req.body.shire;
+	// const place = req.body.place;
+	// const shschedule = req.body.shschedule;
+	// const hallweb = req.body.hallweb;
+	// const barservice = req.body.barservice;
+	// const parking = req.body.parking;
+	// const wc = req.body.wc;
+	// const info = req.body.info;
+	// const program = req.body.program;
 
-	//const { skip, limit, page } = req
-	//const options = req.locals.queryOptions;
-	const currentDate = new Date().getTime();
-	const filter = { finishDate : { $gt: currentDate } };
+	// const latitud = +req.body.latitud;
+	// const longitud = +req.body.longitud;
+	// const coordRegion = [ longitud, latitud ];
+	// console.log(coordRegion)
 
-	feastsAll.find(filter)
-		.then( feasts => {
-			feastsAll.distinct("region")
-				.then( regions => {
-					res.render("feasts", { feasts, regions, user })
-				})
-		})
-		.catch( err => new Error(err) )
+
+	// const dateReqStart = req.body.startDate;
+
+	// const tempdate = dateReq.split("-");
+	// const formatdate = tempdate[1] + "/" + tempdate[2]  + "/" + tempdate[0];
+	// const startDate1 = new Date(date)
+	// const startDate = startDate1.setHours(00, 00, 00);
+
+	// console.log(startDate)
+
+
+	// const dateReqFinish = req.body.finishDate;
+
+	// const tempdateF = dateReqFinish.split("-");
+	// const formatdateF = tempdateF[1] + "/" + tempdateF[2]  + "/" + tempdateF[0];
+	// const finishDate1 = new Date(date)
+	// const startDate = startDate1.setHours(00, 00, 00);
+
+
+
 }
 
 module.exports = createFeast;
@@ -50,7 +71,7 @@ module.exports = createFeast;
 
 
 // /* ---- Several Queries to Mongo to send to templates - WAY 1 ---- */
-	
+
 // 	// const promiseFeasts = db.collection("feasts")
 // 	// 	.find()
 // 	// 	.limit( limit )
@@ -73,7 +94,7 @@ module.exports = createFeast;
 
 // 	// 		return db.collection("feasts").distinct("region")
 // 	// 						.then( regions => res.render('feasts', { feasts, regions } ) )
-			
+
 // 	// 	})
 // 	// 	.catch( err => console.log(err) )
 
