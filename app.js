@@ -17,6 +17,7 @@ const getFeasts = require('./handlers/getFeasts');
 const getFeastFiltered = require('./handlers/getFeastFiltered');
 const getFeastFilteredCoord = require('./handlers/getFeastFilteredCoord');
 const getFeastbyId = require('./handlers/getFeastbyId');
+const createFeast = require('./handlers/createFeast');
 
 const thereIsDotEnv = fs.existsSync('.env')
 if ( thereIsDotEnv ) require('dotenv').load()
@@ -64,6 +65,10 @@ app.use( prepareParams )
 	app.post('/feasts', getFeastFiltered )
 	app.post('/feasts/coord', getFeastFilteredCoord )
 	app.get('/feast/:id', getFeastbyId )
+	app.get('/create', function(req, res){
+		res.render("create")
+	})
+	app.post('/create', createFeast )
 
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}...`))

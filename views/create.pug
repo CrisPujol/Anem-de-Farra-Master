@@ -1,0 +1,68 @@
+doctype html
+html
+  head
+    title= title
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    script(src='http://code.jquery.com/jquery.js')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel="stylesheet", href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel="stylesheet", href='/css/create.css')  
+  body
+  .container
+    .create
+      h2 Afegeix una nova festa
+      .row
+        form(action='/create', method='POST')
+          .col-md-5
+            label Nom de la festa
+            input.form-control(type='text', name='name', placeholder='ex. FIres de Sant Narcís')
+          .col-md-4
+            label Municipi
+            input.form-control(type='text', name='region', placeholder='ex. Girona')
+          .col-md-3
+            label Comarca
+            input.form-control(type='text', name='shire', placeholder='ex. El Gironès')
+          .col-md-12
+            h4 Coordenades
+          .col-md-4
+            label Latitut
+            input#lat.form-control(type='text', name='latitud')
+          .col-md-4
+            label Longitud
+            input#lon.form-control(type='text', name='longitud')
+          .col-md-4
+            label Lloc
+            input.form-control(type='text', name='place', placeholder='ex. Al centre')
+          .col-md-4
+            label Data d'inici
+            input.form-control(type='date', name='startDate')
+          .col-md-4
+            label Data de tancament
+            input.form-control(type='date', name='finishDate')
+          .col-md-4
+            label Horari
+            input.form-control(type='text', name='shschedule', placeholder='ex. Tot el dia...')
+          .col-md-12
+            label Web
+            input.form-control(type='url', name='hallweb', placeholder='ex. http://...')
+          .col-md-12
+            h4 Serveis
+          .col-md-4
+            label Servei de barra
+            input.form-control(type='text', name='barservice', placeholder='SI / NO')
+          .col-md-4
+            label Aparcament
+            input.form-control(type='text', name='parking')
+          .col-md-4
+            label WC
+            input.form-control(type='text', name='parking')
+          .col-md-6
+            label Programa
+            textarea#program.form-control(rows='8')  
+          .col-md-6
+            label Informació addicional
+            textarea#additionalIinfo.form-control(rows='8')  
+          .col-md-12
+            button.btn.btn-default.newFeast(type='submit') Crear
+
+          

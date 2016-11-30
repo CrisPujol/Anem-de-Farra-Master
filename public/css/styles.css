@@ -442,6 +442,47 @@ button.aPropMeu:hover{
 	margin-top: 3px;
 }
 
+
+
+/*CREATE*/
+
+
+.create{
+	background-color: #383838;
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+
+
+.create h1{
+	color: white;
+	font-weight: 500;
+	font-size: 23px;
+	margin: 0px;
+	margin-top: 5px;
+}
+
+.create h3{
+	color: #32e8b7;
+	font-weight: 300;
+	font-size: 19px;
+	margin: 0px;
+}
+
+.create a{
+	background-color: #32e8b7;
+	color: white;
+	text-transform: uppercase;
+	border-radius: 4px;
+	margin: 0px;
+	padding: 10px 30px 10px 30px;
+	display: inline-block;
+	margin-top: 5px;
+
+}
+
+
+
 /*Responsive*/
 
 @media (max-width: 768px){

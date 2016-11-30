@@ -20,7 +20,8 @@ function getFeastFiltered(req, res) {
 
 		const tempdate = date.split("-");
 		const formatdate = tempdate[1] + "/" + tempdate[2]  + "/" + tempdate[0];
-		const startDate = new Date(formatdate).getTime();
+		const startDate1 = new Date(date)
+		const startDate = startDate1.setHours(00, 00, 00);
 
 		filter = { region, startDate };
 
@@ -74,27 +75,9 @@ function getFeastFiltered(req, res) {
 		const user = req.user
 
 		const tempdate = date.split("-");
-
-		console.log("split")
-		console.log(tempdate)
-		console.log("_____________________________________")
-
 		const formatdate = tempdate[1] + "/" + tempdate[2]  + "/" + tempdate[0];
-
-		console.log("format new")
-		console.log(formatdate)
-		console.log("_____________________________________")
-
-
-		//const startDate = new Date(date).getTime();
-		//const startDate = startDate1 - 3600000;
 		const startDate1 = new Date(date)
 		const startDate = startDate1.setHours(00, 00, 00);
-
-
-		console.log("filter")
-		console.log(startDate)
-		console.log("_____________________________________")
 
 
 		filter = { startDate }
