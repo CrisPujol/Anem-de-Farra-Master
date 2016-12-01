@@ -18,6 +18,8 @@ const getFeastFiltered = require('./handlers/getFeastFiltered');
 const getFeastFilteredCoord = require('./handlers/getFeastFilteredCoord');
 const getFeastbyId = require('./handlers/getFeastbyId');
 const createFeast = require('./handlers/createFeast');
+const getCreate = require('./handlers/getCreate');
+const getCoordRegion = require('./handlers/getCoordRegion');
 
 const thereIsDotEnv = fs.existsSync('.env')
 if ( thereIsDotEnv ) require('dotenv').load()
@@ -65,10 +67,8 @@ app.use( prepareParams )
 	app.post('/feasts', getFeastFiltered )
 	app.post('/feasts/coord', getFeastFilteredCoord )
 	app.get('/feast/:id', getFeastbyId )
-	app.get('/create', function(req, res){
-		const user = req.user
-		res.render("create", {user})
-	})
+	app.get('/create', getCreate )
+	app.get('/coord/:region', getCoordRegion )
 	app.post('/create', createFeast )
 
 

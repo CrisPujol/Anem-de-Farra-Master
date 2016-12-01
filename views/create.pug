@@ -25,7 +25,10 @@ html
               input(type='text', name='name', placeholder='FIres de Sant Narcís...', required)
             .col-md-4
               label Municipi
-              input(type='text', name='region', placeholder='Girona...', required)
+              input(type='text', id="region", name='region', placeholder='Girona...', list="regions", required)
+              datalist#regions
+                each region in regions
+                  option(value=region)    
             .col-md-4
               label Comarca
               input(type='text', name='shire', placeholder='El Gironès...', required)
@@ -61,13 +64,13 @@ html
               input(type='text', name='wc')
             .col-md-6
               label Programa
-              textarea#program(rows='8', name='program')  
+              textarea#program(name='program')
             .col-md-6
               label Informació addicional
-              textarea#additionalIinfo(rows='8', name='info')
+              textarea#additionalIinfo(name='info')
               input.hidden(type='text', name='username', value=user.username) 
               input.hidden(type='text', name='idUser', value=user._id) 
             .col-md-12
               button.btn.btn-default.newFeast(type='submit') Crear
-
+    script(type='text/javascript',src='/js/coordCreate.js')
           
