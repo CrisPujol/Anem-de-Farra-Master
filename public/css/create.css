@@ -8,27 +8,85 @@
 /*   color grey: #383838  */
 body{
 	padding-bottom: 150px;
+	padding-top: 50px;
+	background-color: #383838;
 }
-.create h1{
-	font-size: 25px;
-	font-weight: 900;
-	text-transform: uppercase;
-	color: #32e8b7;
-	margin-top: 50px;
-	margin-bottom: 30px;
+
+/*.header{
+	background-color: #383838;
+}*/
+
+.flex{
+	display: flex;
+	flex-direction: column;
+
 }
+
+.logo-header{
+	width: 130px;
+}
+
+.logo{
+	background-image: url("../img/anem_farra_logo2.png");
+	height: 130px;
+	width: 130px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin-bottom: 10px;
+	display: block;
+	align-self: flex-start;
+}
+
+.title h1{
+	font-size: 20px;
+	font-weight: 500;
+	color: white;
+	margin-bottom: 50px;
+}
+
 
 
 .create label{
 	font-size: 15px;
 	font-weight: 500;
+	color: #32e8b7;
 	margin: 15px 0px 5px 0px;
 }
 
 .create input{
-	margin-bottom: 15px;
+	margin-bottom: 20px;
+	background-color: transparent;
+	border: none;
+	border-bottom: 1px solid white;
+	display: block;
+	width: 100%;
+	padding: 10px 10px 5px 5px;
+	color: white;
 }
 
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #383838 inset;
+    -webkit-text-fill-color: white !important;
+}
+
+
+textarea {
+    width: 100%;
+    height: 150px;
+    display: block;
+    margin-bottom: 15px;
+	background-color: transparent;
+	border: 1px solid white;
+	border-radius: 0px;
+	color: white;
+	padding: 10px;
+	margin-top: 20px;
+}
 
 .newFeast {
 	background-color: #32e8b7;
@@ -40,7 +98,7 @@ body{
 }
 
 .newFeast:hover {
-	background-color: #383838;
-	color: white;
+	background-color: white;
+	color: #383838;
 	border: 1px solid #383838;
 }

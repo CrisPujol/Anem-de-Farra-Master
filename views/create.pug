@@ -8,59 +8,66 @@ html
     link(rel="stylesheet", href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
     link(rel="stylesheet", href='/css/create.css')  
   body
-  .container
-    .create
-      h1 Afegeix una nova festa
-      .row
-        form(action='/create', method='POST')
-          .col-md-4
-            label Nom de la festa
-            input.form-control(type='text', name='name', placeholder='FIres de Sant Narcís...', required)
-          .col-md-4
-            label Municipi
-            input.form-control(type='text', name='region', placeholder='Girona...', required)
-          .col-md-4
-            label Comarca
-            input.form-control(type='text', name='shire', placeholder='El Gironès...', required)
-          .col-md-4
-            label Latitud
-            input#lat.form-control(type='text', name='latitud', placeholder="41.5667...", required)
-          .col-md-4
-            label Longitud
-            input#lon.form-control(type='text', name='longitud', placeholder="2.0167...", required)
-          .col-md-4
-            label Lloc
-            input.form-control(type='text', name='place', placeholder='Al centre')
-          .col-md-4
-            label Data d'inici
-            input.form-control(type='date', name='startDateFeast', required)
-          .col-md-4
-            label Data de tancament
-            input.form-control(type='date', name='finishDateFeast', required)
-          .col-md-4
-            label Horari
-            input.form-control(type='text', name='shschedule', placeholder='Tot el dia...')
-          .col-md-12
-            label Web
-            input.form-control(type='url', name='hallweb', placeholder='http://...')
-          .col-md-4
-            label Servei de barra
-            input.form-control(type='text', name='barservice')
-          .col-md-4
-            label Aparcament
-            input.form-control(type='text', name='parking')
-          .col-md-4
-            label WC
-            input.form-control(type='text', name='wc')
-          .col-md-6
-            label Programa
-            textarea#program.form-control(rows='8', name='program')  
-          .col-md-6
-            label Informació addicional
-            textarea#additionalIinfo.form-control(rows='8', name='info')
-            input.form-control.hidden(type='text', name='username', value=user.username) 
-            input.form-control.hidden(type='text', name='idUser', value=user._id) 
-          .col-md-12
-            button.btn.btn-default.newFeast(type='submit') Crear
+    .header
+      .container
+        .flex
+          .logo-header
+            a(href='/feasts')
+              span.logo
+          .title      
+            h1 Afegeix una nova festa
+    .container
+      .create
+        .row
+          form(action='/create', method='POST')
+            .col-md-4
+              label Nom de la festa
+              input(type='text', name='name', placeholder='FIres de Sant Narcís...', required)
+            .col-md-4
+              label Municipi
+              input(type='text', name='region', placeholder='Girona...', required)
+            .col-md-4
+              label Comarca
+              input(type='text', name='shire', placeholder='El Gironès...', required)
+            .col-md-4
+              label Latitud
+              input#lat(type='text', name='latitud', placeholder="41.5667...", required)
+            .col-md-4
+              label Longitud
+              input#lon(type='text', name='longitud', placeholder="2.0167...", required)
+            .col-md-4
+              label Lloc
+              input(type='text', name='place', placeholder='Al centre')
+            .col-md-4
+              label Data d'inici
+              input(type='date', name='startDateFeast', required)
+            .col-md-4
+              label Data de tancament
+              input(type='date', name='finishDateFeast', required)
+            .col-md-4
+              label Horari
+              input(type='text', name='shschedule', placeholder='Tot el dia...')
+            .col-md-12
+              label Web
+              input(type='url', name='hallweb', placeholder='http://...')
+            .col-md-4
+              label Servei de barra
+              input(type='text', name='barservice')
+            .col-md-4
+              label Aparcament
+              input(type='text', name='parking')
+            .col-md-4
+              label WC
+              input(type='text', name='wc')
+            .col-md-6
+              label Programa
+              textarea#program(rows='8', name='program')  
+            .col-md-6
+              label Informació addicional
+              textarea#additionalIinfo(rows='8', name='info')
+              input.hidden(type='text', name='username', value=user.username) 
+              input.hidden(type='text', name='idUser', value=user._id) 
+            .col-md-12
+              button.btn.btn-default.newFeast(type='submit') Crear
 
           
