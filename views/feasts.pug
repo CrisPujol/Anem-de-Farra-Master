@@ -1,38 +1,40 @@
 extends index
 
 block content
-    #container.container
-      p.noResult= noResult
-      p.opcioB= opcioB
-      if (weekMsg)
-        h1.weekMsg=weekMsg
-      .flex-feasts
-         each feast in feasts
-            .fesatsList
-               a(class="title", data-id=feast._id, href="/feast/" + feast._id)= feast.name
-               h2= feast.startDateTxt  + " - " + feast.finishDateTxt
-               h6= feast.region + " (" + feast.shire + ")"
-               .row
-                 .col-xs-2.col-md-1
-                   .schedule
-                 .col-xs-9.col-md-3
-                   p= feast.shschedule
-                 .col-xs-2.col-md-1
-                   .place
-                 .col-xs-9.col-md-5
-                   p= feast.place
-      if (nearFeasts)             
-        .othersFeasts
-            h1  A menys de 10 km també hi ha... 
-            .flex-feasts-detail
-              each feasts in nearFeasts
-                .nearFeasts
-                  a(class="title", data-id=feasts._id, href="/feast/" + feasts._id)= feasts.name
-                  h2= feasts.startDateTxt  + " - " + feasts.finishDateTxt
-                  h6= feasts.region     
-    if anchor
-      script.
-          window.onload = window.location.hash = '#container';           
-    
+      #container.container
+         p.noResult= noResult
+         p.opcioB= opcioB
+         if (weekMsg)
+            h1.weekMsg=weekMsg
+         .flex-feasts
+               each feast in feasts
+                  .fesatsList
+                     a(class="title", data-id=feast._id, href="/feast/" + feast._id)= feast.name
+                     h2= feast.startDateTxt  + " - " + feast.finishDateTxt
+                     h6= feast.region + " (" + feast.shire + ")"
+                     .row
+                        if (feast.shschedule)
+                           .col-xs-2.col-md-1
+                              .schedule
+                           .col-xs-9.col-md-3
+                              p= feast.shschedule
+                        if (feast.place)     
+                           .col-xs-2.col-md-1
+                              .place
+                           .col-xs-9.col-md-5
+                              p= feast.place
+         if (nearFeasts)             
+            .othersFeasts
+                  h1  A menys de 10 km també hi ha... 
+                  .flex-feasts-detail
+                     each feasts in nearFeasts
+                        .nearFeasts
+                           a(class="title", data-id=feasts._id, href="/feast/" + feasts._id)= feasts.name
+                           h2= feasts.startDateTxt  + " - " + feasts.finishDateTxt
+                           h6= feasts.region     
+      if anchor
+         script.
+               window.onload = window.location.hash = '#container';           
+      
 
 
