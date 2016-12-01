@@ -50,13 +50,13 @@ html(lang='en')
                 input#dataStart.form-control(type='date', name='dataStart', placeholder='ex: 2016-11-28...')
                 button.btn.btn-default.search(type='submit') Buscar
       if (user)         
-        .create
+        .background-create
           .container
-            .row
-              .col-md-3
+            .create
+              .wellcome
                 h3 Benvingut #{user.username}
                 h1 Crea una festa nova 
-              .col-md-2.col-md-offset-0.text-right
+              .button-create
                 a(href='/create') Crea        
           
     main              

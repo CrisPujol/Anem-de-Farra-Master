@@ -10,20 +10,18 @@ html
   body
   .container
     .create
-      h2 Afegeix una nova festa
+      h1 Afegeix una nova festa
       .row
         form(action='/create', method='POST')
-          .col-md-5
+          .col-md-4
             label Nom de la festa
             input.form-control(type='text', name='name', placeholder='FIres de Sant Narcís...', required)
           .col-md-4
             label Municipi
             input.form-control(type='text', name='region', placeholder='Girona...', required)
-          .col-md-3
+          .col-md-4
             label Comarca
             input.form-control(type='text', name='shire', placeholder='El Gironès...', required)
-          .col-md-12
-            h4 Coordenades
           .col-md-4
             label Latitud
             input#lat.form-control(type='text', name='latitud', placeholder="41.5667...", required)
@@ -45,8 +43,6 @@ html
           .col-md-12
             label Web
             input.form-control(type='url', name='hallweb', placeholder='http://...')
-          .col-md-12
-            h4 Serveis
           .col-md-4
             label Servei de barra
             input.form-control(type='text', name='barservice')

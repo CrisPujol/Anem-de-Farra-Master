@@ -477,12 +477,16 @@ button.aPropMeu:hover{
 /*CREATE*/
 
 
-.create{
+.background-create{
 	background-color: #383838;
 	padding-top: 40px;
 	padding-bottom: 40px;
 }
 
+.create{
+	display: flex;
+	align-items: center;
+}
 
 .create h1{
 	color: white;
@@ -500,8 +504,7 @@ button.aPropMeu:hover{
 }
 
 .create a{
-/*	background-color: #32e8b7;
-*/	border: 2px solid #32e8b7;
+	border: 2px solid #32e8b7;
 	color: white;
 	text-transform: uppercase;
 	border-radius: 4px;
@@ -509,6 +512,7 @@ button.aPropMeu:hover{
 	padding: 15px 40px 15px 40px;
 	display: inline-block;
 	margin-top: 2px;
+	margin-left: 100px;
 }
 
 .create a:hover{
@@ -553,10 +557,6 @@ button.aPropMeu:hover{
 		width: 100%;
 		
 	}
-
-
-
-
 }
 
 
@@ -578,4 +578,18 @@ button.aPropMeu:hover{
 	.geoSearch{
 		border: none;
 	}
+}	
+
+
+@media (max-width: 470px){
+	.create{
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.create a{
+		margin-left: 0px;
+		margin-top: 20px;
+	}
+
 }	

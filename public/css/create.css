@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
+
+* {
+	font-family: Roboto;
+}
+
+/*   color green: #32e8b7  */
+/*   color grey: #383838  */
+body{
+	padding-bottom: 150px;
+}
+.create h1{
+	font-size: 25px;
+	font-weight: 900;
+	text-transform: uppercase;
+	color: #32e8b7;
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+
+
+.create label{
+	font-size: 15px;
+	font-weight: 500;
+	margin: 15px 0px 5px 0px;
+}
+
+.create input{
+	margin-bottom: 15px;
+}
+
+
+.newFeast {
+	background-color: #32e8b7;
+	color: white;
+	padding: 10px 25px 10px 25px;
+	border: none;
+	margin-top: 20px;
+	border: 1px solid transparent;
+}
+
+.newFeast:hover {
+	background-color: #383838;
+	color: white;
+	border: 1px solid #383838;
+}
