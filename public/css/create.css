@@ -102,3 +102,16 @@ textarea {
 	color: #383838;
 	border: 1px solid #383838;
 }
+
+
+
+
+
+.logo-skylab{
+	background-image: url("../img/skylab-colors-white.png");
+	height: 31px;
+	width: 150px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin-top: 20px;
+}

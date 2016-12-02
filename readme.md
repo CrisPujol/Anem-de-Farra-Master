@@ -4,9 +4,12 @@
 With "Anem de farra" it is possible to find feasts by Region, start date and location.
 
 
+##Technologies used
+
+I worked with HTML5, CSS3, Pug, Node JS, Express JS, MongoDB. 
 
 
-## Topics
+##Topics
 Topics covered in this project:
 
 - **API endpoints** using data from a **MongoDb collection** to retrieve data or perform actions:

@@ -70,7 +70,11 @@ html
               textarea#additionalIinfo(name='info')
               input.hidden(type='text', name='username', value=user.username) 
               input.hidden(type='text', name='idUser', value=user._id) 
-            .col-md-12
+            .col-md-6
               button.btn.btn-default.newFeast(type='submit') Crear
+            .col-md-6
+              .pull-right 
+                div.logo-skylab 
+                
     script(type='text/javascript',src='/js/coordCreate.js')
           
