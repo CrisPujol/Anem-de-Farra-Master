@@ -1,4 +1,3 @@
-//"use strict"
 const feastsAll = require('../models/feasts');
 
 function getFeastFiltered(req, res) {
@@ -23,7 +22,13 @@ function getFeastFiltered(req, res) {
 		.then( feasts => {
 			feastsAll.distinct("region")
 			.then( regions => {
-				res.render("feasts", { feasts, regions, anchor: 'anchor', user })
+				if(feasts.length === 0){
+					const noResult = "Ho sentim, no hi ha resultats";
+					res.render("feasts", { feasts, regions, anchor: 'anchor', user, noResult })
+				}
+				else{
+					res.render("feasts", { feasts, regions, anchor: 'anchor', user })
+				}		
 			})
 		})
 	}

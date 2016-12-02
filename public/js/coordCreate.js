@@ -8,7 +8,6 @@ $("#region").on("change", function(){
     url: '/coord/' + region,
     type: 'GET',
     dataType: 'json'
-    // data: {region: region},
   })
   .done(function(feast) {
     var coord = feast[0].coordRegion;

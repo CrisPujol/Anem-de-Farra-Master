@@ -1,26 +1,3 @@
-// const feastsAll = require('../models/feasts')
-
-// function getFeasts(req, res) {
-
-
-// 	const options = req.locals.queryOptions;
-// 	const currentDate = new Date().getTime();
-// 	const filter = { finishDate : { $gt: currentDate } };
-// 	console.log(options)
-
-// 	feastsAll.paginate( filter, options, function(err, feasts){
-// 		if(err) throw err;
-// 		console.log(feasts)
-// 		res.render("feasts" , { feasts } )
-// 	})
-					
-		
-// }
-
-// module.exports = getFeasts;
-
-
-
 
 "use strict"
 
@@ -46,6 +23,62 @@ function getFeasts(req, res) {
 }
 
 module.exports = getFeasts;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const feastsAll = require('../models/feasts')
+
+// function getFeasts(req, res) {
+
+
+// 	const options = req.locals.queryOptions;
+// 	const currentDate = new Date().getTime();
+// 	const filter = { finishDate : { $gt: currentDate } };
+// 	console.log(options)
+
+// 	feastsAll.paginate( filter, options, function(err, feasts){
+// 		if(err) throw err;
+// 		console.log(feasts)
+// 		res.render("feasts" , { feasts } )
+// 	})
+					
+		
+// }
+
+// module.exports = getFeasts;
+
 
 
 

@@ -1,5 +1,3 @@
-
-
 const feastsAll = require('../models/feasts')
 
 function createFeast(req, res) {
@@ -33,17 +31,14 @@ function createFeast(req, res) {
 	const finishDateTxt = finishDateFeastSplit[2] + "/" + finishDateFeastSplit[1] + "/" + finishDateFeastSplit[0];
 
 
-
-
 	const data = { name, region, shire, place, shschedule, hallweb, barservice, parking, wc, info, program, coordRegion, startDate, finishDate, startDateTxt, finishDateTxt, username, idUser }
 	
-       const newFeast = new feastsAll(data);
-            newFeast.save((err, feast) =>{
-            	console.log(feast)
-                if(err) return (err)
-                res.redirect("/feast/" + feast._id)
-            })
-
+	const newFeast = new feastsAll(data);
+	newFeast.save((err, feast) =>{
+		console.log(feast)
+		if(err) return (err)
+			res.redirect("/feast/" + feast._id)
+	})
 }
 
 module.exports = createFeast;

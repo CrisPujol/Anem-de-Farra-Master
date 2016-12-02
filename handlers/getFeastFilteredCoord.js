@@ -4,11 +4,8 @@ const feastsAll = require('../models/feasts');
 
 function getFeastFilteredCoord(req, res) {
 
-	console.log("getFeastFilteredCoord...")
 	const { skip, limit, page } = req
 
-	//const region = req.body.regionFeasts;
-	//const date = req.body.dataStart;
 	const lat = +req.body.latitud;
 	const lon = +req.body.longitud;
 	const kmMax = +req.body.kmMax || 40;
@@ -27,21 +24,21 @@ function getFeastFilteredCoord(req, res) {
 		const weekLater = new Date(currentDate).getTime() + 7 * 24 * 60 * 60 * 1000; 
 
 		feastsAll.find(filterAround)
-			.then( feastsAround => {
-				feastsAll.distinct("region")
-				.then ( regions => {
-					const weekMsg = "Des d'avui fins 7 dies després pots triar:";
-					const feasts = feastsAround.map( elem => elem._doc).filter( elem => {
-						return elem.finishDate >= currentDate && elem.startDate <= weekLater;
-					})
-					if(feasts.length === 0){
-						const noResult = "Ho sentim, no hi ha resultats";
-						res.render("feasts", { feasts , noResult, regions })
-					}
-					res.render("feasts", { feasts , weekMsg, regions, anchor: 'anchor', user })
+		.then( feastsAround => {
+			feastsAll.distinct("region")
+			.then ( regions => {
+				const weekMsg = "Des d'avui fins 7 dies després pots triar:";
+				const feasts = feastsAround.map( elem => elem._doc).filter( elem => {
+					return elem.finishDate >= currentDate && elem.startDate <= weekLater;
 				})
+				if(feasts.length === 0){
+					const noResult = "Ho sentim, no hi ha resultats";
+					res.render("feasts", { feasts , noResult, regions })
+				}
+				res.render("feasts", { feasts , weekMsg, regions, anchor: 'anchor', user })
 			})
-			.catch( err => new Error(err) )
+		})
+		.catch( err => new Error(err) )
 	}
 
 
@@ -50,11 +47,11 @@ function getFeastFilteredCoord(req, res) {
 	if( kmMax && lat === 0 ){
 		const user = req.user
 		feastsAll.distinct("region")
-			.then ( regions =>{
-				const message = req.flash('message')
-				res.render('index', { message, message, regions, anchor: 'anchor', user });
-			})
-			.catch( err => new Error(err) )
+		.then ( regions =>{
+			const message = req.flash('message')
+			res.render('index', { message, message, regions, anchor: 'anchor', user });
+		})
+		.catch( err => new Error(err) )
 	}
 
 }
