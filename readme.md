@@ -1,7 +1,7 @@
 #Anem de farra
 
-Anem de farra is a searcher of Catalonia local feasts. Also, every registred user can create new feasts. 
-Is possible find feasts by Region, start date and location.
+"Anem de farra" is a searcher of Catalonia local feasts. Also, every registered user can create new feasts.
+With "Anem de farra" it is possible to find feasts by Region, start date and location.
 
 
 
@@ -16,4 +16,4 @@ Topics covered in this project:
     + `GET` `/feasts/:id` → get by id. 
     + `GET` `/create` → get page create.
     + `GET` `/coord/:region` → get json with feasts region filter. 
-    + `POST` `/create` → SAve new feast
+    + `POST` `/create` → Save new feast
